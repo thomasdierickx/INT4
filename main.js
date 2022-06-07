@@ -23,7 +23,7 @@ class BasicCharacterController {
   _Init(params) {
     this._params = params;
     this._decceleration = new THREE.Vector3(-0.0005, -0.0001, -5.0);
-    this._acceleration = new THREE.Vector3(1, 0.25, 50.0);
+    this._acceleration = new THREE.Vector3(1, 0.25, 250.0);
     this._velocity = new THREE.Vector3(0, 0, 0);
     this._position = new THREE.Vector3();
 
@@ -444,31 +444,31 @@ class IdleState extends State {
     return 'idle';
   }
 
-  // Enter(prevState) {
-  //   const idleAction = this._parent._proxy._animations['idle'].action;
-  //   if (prevState) {
-  //     const prevAction = this._parent._proxy._animations[prevState.Name].action;
-  //     idleAction.time = 0.0;
-  //     idleAction.enabled = true;
-  //     idleAction.setEffectiveTimeScale(1.0);
-  //     idleAction.setEffectiveWeight(1.0);
-  //     idleAction.crossFadeFrom(prevAction, 0.5, true);
-  //     idleAction.play();
-  //   } else {
-  //     idleAction.play();
-  //   }
-  // }
+  Enter(prevState) {
+    const idleAction = this._parent._proxy._animations['idle'].action;
+    if (prevState) {
+      const prevAction = this._parent._proxy._animations[prevState.Name].action;
+      idleAction.time = 0.0;
+      idleAction.enabled = true;
+      idleAction.setEffectiveTimeScale(1.0);
+      idleAction.setEffectiveWeight(1.0);
+      idleAction.crossFadeFrom(prevAction, 0.5, true);
+      idleAction.play();
+    } else {
+      idleAction.play();
+    }
+  }
 
-  // Exit() {
-  // }
+  Exit() {
+  }
 
-  // Update(_, input) {
-  //   if (input._keys.forward || input._keys.backward) {
-  //     this._parent.SetState('walk');
-  //   } else if (input._keys.space) {
-  //     this._parent.SetState('dance');
-  //   }
-  // }
+  Update(_, input) {
+    if (input._keys.forward || input._keys.backward) {
+      this._parent.SetState('walk');
+    } else if (input._keys.space) {
+      this._parent.SetState('dance');
+    }
+  }
 };
 
 
@@ -488,7 +488,7 @@ class ThirdPersonCamera {
   }
 
   _CalculateIdealLookat() {
-    const idealLookat = new THREE.Vector3(0, 10, 50);
+    const idealLookat = new THREE.Vector3(0, 5, 0);
     idealLookat.add(this._params.target.Position);
     return idealLookat;
   }
@@ -577,7 +577,22 @@ class Canvas {
     this._previousRAF = null;
 
     this._LoadAnimatedModel();
+    this._LoadBoard();
     this._RAF();
+  }
+
+  _LoadBoard() {
+    // Instantiate a loader
+    let board = new THREE.Object3D()
+    const loader = new GLTFLoader();
+    loader.load('./resources/extra/scene.gltf', (gltfScene) => {
+      board = gltfScene.scene;
+      board.position.set(25, 3, 25);
+      board.scale.setScalar(0.3);
+      board.rotation.set(0, 0.6, 0);
+      this._scene.add(board);
+    }
+    );
   }
 
   _LoadAnimatedModel() {
