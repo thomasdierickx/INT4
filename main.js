@@ -14,7 +14,6 @@ class BasicCharacterControllerProxy {
   }
 };
 
-
 class BasicCharacterController {
   constructor(params) {
     this._Init(params);
@@ -70,11 +69,204 @@ class BasicCharacterController {
       loader.load('run.fbx', (a) => { _OnLoad('run', a); });
       loader.load('idle.fbx', (a) => { _OnLoad('idle', a); });
       loader.load('dance.fbx', (a) => { _OnLoad('dance', a); });
+      loader.load('greeting.fbx', (a) => { _OnLoad('greet', a); });
     });
   }
 
   get Position() {
+    // First npc interaction
+    if (this._position.x > 130 && this._position.x < 170 && this._position.z > 80 && this._position.z < 120) {
+      document.getElementById("sectionChange").style.visibility = "visible"
+    }
+    if (this._position.x < 130) {
+      document.getElementById("sectionChange").style.visibility = "hidden";
+      document.getElementById("sectionChange2").style.visibility = "hidden";
+      document.getElementById("sectionChange3").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction2").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction3").style.visibility = "hidden";
+    }
+    if (this._position.x > 170) {
+      document.getElementById("sectionChange").style.visibility = "hidden";
+      document.getElementById("sectionChange2").style.visibility = "hidden";
+      document.getElementById("sectionChange3").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction2").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction3").style.visibility = "hidden";
+    }
+
+    document.getElementById("answer1").onclick = function () {
+      document.getElementById("sectionChange").style.display = "none";
+      document.getElementById("sectionChange2").style.visibility = "visible";
+    };
+
+    document.getElementById("answer2").onclick = function () {
+      document.getElementById("sectionChange2").style.display = "none";
+      document.getElementById("sectionChange3").style.visibility = "visible";
+    };
+
+    document.getElementById("20").onclick = function () {
+      document.getElementById("sectionChange3").style.display = "none";
+      document.getElementById("sectionChangeReaction").style.visibility = "visible";
+    };
+
+    document.getElementById("60").onclick = function () {
+      document.getElementById("sectionChange3").style.display = "none";
+      document.getElementById("sectionChangeReaction2").style.visibility = "visible";
+    };
+
+    document.getElementById("90").onclick = function () {
+      document.getElementById("sectionChange3").style.display = "none";
+      document.getElementById("sectionChangeReaction3").style.visibility = "visible";
+      this.UpdateState();
+    };
+
+    // NPC 2 interaction
+    if (this._position.x > 280 && this._position.x < 320 && this._position.z > 80 && this._position.z < 120) {
+      document.getElementById("sectionChangeNPC2").style.visibility = "visible"
+    }
+    if (this._position.x < 280) {
+      document.getElementById("sectionChangeNPC2").style.visibility = "hidden";
+      document.getElementById("sectionChange2NPC2").style.visibility = "hidden";
+      document.getElementById("sectionChange3NPC2").style.visibility = "hidden";
+      document.getElementById("sectionChangeReactionNPC2").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction2NPC2").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction3NPC2").style.visibility = "hidden";
+    }
+    if (this._position.x > 320) {
+      document.getElementById("sectionChangeNPC2").style.visibility = "hidden";
+      document.getElementById("sectionChange2NPC2").style.visibility = "hidden";
+      document.getElementById("sectionChange3NPC2").style.visibility = "hidden";
+      document.getElementById("sectionChangeReactionNPC2").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction2NPC2").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction3NPC2").style.visibility = "hidden";
+    }
+
+    document.getElementById("answer1NPC2").onclick = function () {
+      document.getElementById("sectionChangeNPC2").style.display = "none";
+      document.getElementById("sectionChange2NPC2").style.visibility = "visible";
+    };
+
+    document.getElementById("answer2NPC2").onclick = function () {
+      document.getElementById("sectionChange2NPC2").style.display = "none";
+      document.getElementById("sectionChange3NPC2").style.visibility = "visible";
+    };
+
+    document.getElementById("20NPC2").onclick = function () {
+      document.getElementById("sectionChange3NPC2").style.display = "none";
+      document.getElementById("sectionChangeReactionNPC2").style.visibility = "visible";
+    };
+
+    document.getElementById("60NPC2").onclick = function () {
+      document.getElementById("sectionChange3NPC2").style.display = "none";
+      document.getElementById("sectionChangeReaction2NPC2").style.visibility = "visible";
+    };
+
+    document.getElementById("90NPC2").onclick = function () {
+      document.getElementById("sectionChange3NPC2").style.display = "none";
+      document.getElementById("sectionChangeReaction3NPC2").style.visibility = "visible";
+      this.UpdateState();
+    };
+
+    // NPC 3 interaction
+    if (this._position.x > -20 && this._position.x < 20 && this._position.z > 80 && this._position.z < 120) {
+      document.getElementById("sectionChangeNPC3").style.visibility = "visible"
+    }
+    if (this._position.x < -20) {
+      document.getElementById("sectionChangeNPC3").style.visibility = "hidden";
+      document.getElementById("sectionChange2NPC3").style.visibility = "hidden";
+      document.getElementById("sectionChange3NPC3").style.visibility = "hidden";
+      document.getElementById("sectionChangeReactionNPC3").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction2NPC3").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction3NPC3").style.visibility = "hidden";
+    }
+    if (this._position.x > 20) {
+      document.getElementById("sectionChangeNPC3").style.visibility = "hidden";
+      document.getElementById("sectionChange2NPC3").style.visibility = "hidden";
+      document.getElementById("sectionChange3NPC3").style.visibility = "hidden";
+      document.getElementById("sectionChangeReactionNPC3").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction2NPC3").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction3NPC3").style.visibility = "hidden";
+    }
+
+    document.getElementById("answer1NPC3").onclick = function () {
+      document.getElementById("sectionChangeNPC3").style.display = "none";
+      document.getElementById("sectionChange2NPC3").style.visibility = "visible";
+    };
+
+    document.getElementById("answer2NPC3").onclick = function () {
+      document.getElementById("sectionChange2NPC3").style.display = "none";
+      document.getElementById("sectionChange3NPC3").style.visibility = "visible";
+    };
+
+    document.getElementById("20NPC3").onclick = function () {
+      document.getElementById("sectionChange3NPC3").style.display = "none";
+      document.getElementById("sectionChangeReactionNPC3").style.visibility = "visible";
+    };
+
+    document.getElementById("60NPC3").onclick = function () {
+      document.getElementById("sectionChange3NPC3").style.display = "none";
+      document.getElementById("sectionChangeReaction2NPC3").style.visibility = "visible";
+    };
+
+    document.getElementById("90NPC3").onclick = function () {
+      document.getElementById("sectionChange3NPC3").style.display = "none";
+      document.getElementById("sectionChangeReaction3NPC3").style.visibility = "visible";
+      this.UpdateState();
+    };
+
+    // NPC 4 interaction
+    if (this._position.x > 130 && this._position.x < 170 && this._position.z > -20 && this._position.z < 20) {
+      document.getElementById("sectionChangeNPC4").style.visibility = "visible"
+    }
+    if (this._position.x < 130) {
+      document.getElementById("sectionChangeNPC4").style.visibility = "hidden";
+      document.getElementById("sectionChange2NPC4").style.visibility = "hidden";
+      document.getElementById("sectionChange3NPC4").style.visibility = "hidden";
+      document.getElementById("sectionChangeReactionNPC4").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction2NPC4").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction3NPC4").style.visibility = "hidden";
+    }
+    if (this._position.x > 170) {
+      document.getElementById("sectionChangeNPC4").style.visibility = "hidden";
+      document.getElementById("sectionChange2NPC4").style.visibility = "hidden";
+      document.getElementById("sectionChange3NPC4").style.visibility = "hidden";
+      document.getElementById("sectionChangeReactionNPC4").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction2NPC4").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction3NPC4").style.visibility = "hidden";
+    }
+
+    document.getElementById("answer1NPC4").onclick = function () {
+      document.getElementById("sectionChangeNPC4").style.display = "none";
+      document.getElementById("sectionChange2NPC4").style.visibility = "visible";
+    };
+
+    document.getElementById("answer2NPC4").onclick = function () {
+      document.getElementById("sectionChange2NPC4").style.display = "none";
+      document.getElementById("sectionChange3NPC4").style.visibility = "visible";
+    };
+
+    document.getElementById("20NPC4").onclick = function () {
+      document.getElementById("sectionChange3NPC4").style.display = "none";
+      document.getElementById("sectionChangeReactionNPC4").style.visibility = "visible";
+    };
+
+    document.getElementById("60NPC4").onclick = function () {
+      document.getElementById("sectionChange3NPC4").style.display = "none";
+      document.getElementById("sectionChangeReaction2NPC4").style.visibility = "visible";
+    };
+
+    document.getElementById("90NPC4").onclick = function () {
+      document.getElementById("sectionChange3NPC4").style.display = "none";
+      document.getElementById("sectionChangeReaction3NPC4").style.visibility = "visible";
+      this.UpdateState();
+    };
     return this._position;
+  }
+
+  UpdateState() {
+    let canvas2 = new Canvas();
+    console.log("Dit werkt", canvas2);
   }
 
   get Rotation() {
@@ -133,6 +325,11 @@ class BasicCharacterController {
       _Q.setFromAxisAngle(_A, 4.0 * -Math.PI * timeInSeconds * this._acceleration.y);
       _R.multiply(_Q);
     }
+    if (this._stateMachine._currentState.Name == 'greet') {
+      // Canvas._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100));
+      // this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100));
+      // console.log(Canvas(_LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100))));
+    }
 
     controlObject.quaternion.copy(_R);
 
@@ -174,6 +371,7 @@ class BasicCharacterControllerInput {
       right: false,
       space: false,
       shift: false,
+      interact: false,
     };
     document.addEventListener('keydown', (e) => this._onKeyDown(e), false);
     document.addEventListener('keyup', (e) => this._onKeyUp(e), false);
@@ -185,6 +383,12 @@ class BasicCharacterControllerInput {
         this._keys.forward = true;
         break;
       case 81: // q
+        this._keys.left = true;
+        break;
+      case 65: // a
+        this._keys.forward = true;
+        break;
+      case 87: // w
         this._keys.left = true;
         break;
       case 83: // s
@@ -199,6 +403,9 @@ class BasicCharacterControllerInput {
       case 16: // SHIFT
         this._keys.shift = true;
         break;
+      case 69: // e ==> interact
+        this._keys.interact = true;
+        break;
     }
   }
 
@@ -209,6 +416,12 @@ class BasicCharacterControllerInput {
         break;
       case 81: // q
         this._keys.left = false;
+        break;
+      case 65: // a
+        this._keys.forward = true;
+        break;
+      case 87: // w
+        this._keys.left = true;
         break;
       case 83: // s
         this._keys.backward = false;
@@ -221,6 +434,9 @@ class BasicCharacterControllerInput {
         break;
       case 16: // SHIFT
         this._keys.shift = false;
+        break;
+      case 69: // e ==> interact
+        this._keys.interact = false;
         break;
     }
   }
@@ -273,6 +489,7 @@ class CharacterFSM extends FiniteStateMachine {
     this._AddState('walk', WalkState);
     this._AddState('run', RunState);
     this._AddState('dance', DanceState);
+    this._AddState('greet', GreetState);
   }
 };
 
@@ -326,6 +543,56 @@ class DanceState extends State {
 
   _Cleanup() {
     const action = this._parent._proxy._animations['dance'].action;
+
+    action.getMixer().removeEventListener('finished', this._CleanupCallback);
+  }
+
+  Exit() {
+    this._Cleanup();
+  }
+
+  Update(_) {
+  }
+};
+
+class GreetState extends State {
+  constructor(parent) {
+    super(parent);
+
+    this._FinishedCallback = () => {
+      this._Finished();
+    }
+  }
+
+  get Name() {
+    return 'greet';
+  }
+
+  Enter(prevState) {
+    const curAction = this._parent._proxy._animations['greet'].action;
+    const mixer = curAction.getMixer();
+    mixer.addEventListener('finished', this._FinishedCallback);
+
+    if (prevState) {
+      const prevAction = this._parent._proxy._animations[prevState.Name].action;
+
+      curAction.reset();
+      curAction.setLoop(THREE.LoopOnce, 1);
+      curAction.clampWhenFinished = true;
+      curAction.crossFadeFrom(prevAction, 0.2, true);
+      curAction.play();
+    } else {
+      curAction.play();
+    }
+  }
+
+  _Finished() {
+    this._Cleanup();
+    this._parent.SetState('idle');
+  }
+
+  _Cleanup() {
+    const action = this._parent._proxy._animations['greet'].action;
 
     action.getMixer().removeEventListener('finished', this._CleanupCallback);
   }
@@ -554,17 +821,20 @@ class Canvas {
     light.shadow.camera.bottom = -50;
     this._scene.add(light);
 
+    // Adding light to scene
     light = new THREE.AmbientLight(0xFFFFFF, 0.25);
     this._scene.add(light);
 
-    let dotGeometry = new THREE.Geometry();
-    dotGeometry.vertices.push(new THREE.Vector3(0, 0, 0));
-    let dotMaterial = new THREE.PointsMaterial({ size: 60, sizeAttenuation: false });
-    let dot = new THREE.Points(dotGeometry, dotMaterial);
-    this._scene.add(dot);
+    // Point of interest
+    // let ineraction = new THREE.Geometry();
+    // ineraction.vertices.push(new THREE.Vector3(100, 0, 100));
+    // let dotMaterial = new THREE.PointsMaterial({ size: 200, sizeAttenuation: false });
+    // let dot = new THREE.Points(ineraction, dotMaterial);
+    // this._scene.add(dot);
 
+    // Adding green plane
     const plane = new THREE.Mesh(
-      new THREE.PlaneGeometry(10000, 10000, 10, 10),
+      new THREE.PlaneGeometry(5000, 5000, 10, 10),
       new THREE.MeshStandardMaterial({
         color: 0x7CFC00,
       }));
@@ -577,22 +847,35 @@ class Canvas {
     this._previousRAF = null;
 
     this._LoadAnimatedModel();
-    this._LoadBoard();
+    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(150, 0, 100), -Math.PI / 2);
+    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(300, 0, 100), -Math.PI / 1);
+    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(0, 0, 100), -Math.PI / 1);
+    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(150, 0, 0), - Math.PI / 2);
+    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(300, 0, 0), -Math.PI / 5);
     this._RAF();
   }
 
-  _LoadBoard() {
-    // Instantiate a loader
-    let board = new THREE.Object3D()
-    const loader = new GLTFLoader();
-    loader.load('./resources/extra/scene.gltf', (gltfScene) => {
-      board = gltfScene.scene;
-      board.position.set(25, 3, 25);
-      board.scale.setScalar(0.3);
-      board.rotation.set(0, 0.6, 0);
-      this._scene.add(board);
-    }
-    );
+  _LoadAnimatedModelAndPlay(path, modelFile, animFile, offset, modelRotation) {
+    const loader = new FBXLoader();
+    loader.setPath(path);
+    loader.load(modelFile, (fbx) => {
+      fbx.scale.setScalar(0.25);
+      fbx.rotation.y = modelRotation;
+      fbx.traverse(c => {
+        c.castShadow = true;
+      });
+      fbx.position.copy(offset);
+
+      const anim = new FBXLoader();
+      anim.setPath(path);
+      anim.load(animFile, (anim) => {
+        const m = new THREE.AnimationMixer(fbx);
+        this._mixers.push(m);
+        const idle = m.clipAction(anim.animations[0]);
+        idle.play();
+      });
+      this._scene.add(fbx);
+    });
   }
 
   _LoadAnimatedModel() {
