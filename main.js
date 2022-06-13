@@ -853,6 +853,7 @@ class Canvas {
     this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(150, 0, 0), - Math.PI / 2);
     this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(300, 0, 0), -Math.PI / 5);
     this._RAF();
+    // this._LoadModel();
   }
 
   _LoadAnimatedModelAndPlay(path, modelFile, animFile, offset, modelRotation) {
@@ -877,6 +878,18 @@ class Canvas {
       this._scene.add(fbx);
     });
   }
+
+  // _LoadModel() {
+  //   const loader = new GLTFLoader();
+  //   loader.load('./resources/school/stad.gltf', (gltf) => {
+  //     gltf.scene.traverse(c => {
+  //       c.castShadow = true;
+  //     });
+  //     gltf.scene.scale.setScalar(25);
+  //     gltf.scene.rotation.y = -Math.PI / 1.5;
+  //     this._scene.add(gltf.scene);
+  //   });
+  // }
 
   _LoadAnimatedModel() {
     const params = {
