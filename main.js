@@ -64,9 +64,9 @@ class BasicCharacterController {
 
       const loader = new FBXLoader(this._manager);
       loader.setPath('./resources/character/');
-      loader.load('walkIP.fbx', (a) => { _OnLoad('walk', a); });
+      loader.load('WalkIP.fbx', (a) => { _OnLoad('walk', a); });
       loader.load('run.fbx', (a) => { _OnLoad('run', a); });
-      loader.load('idle.fbx', (a) => { _OnLoad('idle', a); });
+      loader.load('Idle.fbx', (a) => { _OnLoad('idle', a); });
       loader.load('dance.fbx', (a) => { _OnLoad('dance', a); });
     });
   }
@@ -781,7 +781,7 @@ class Canvas {
     this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(300, 0, 0), -Math.PI / 5);
     this._RAF();
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       let randomX = Math.floor(Math.random() * 500);
       let randomZ = Math.floor(Math.random() * 500);
       let randomScale = Math.floor(Math.random() * 5);
