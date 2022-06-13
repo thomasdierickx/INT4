@@ -305,7 +305,7 @@ class BasicCharacterController {
       acc.multiplyScalar(2.0);
     }
 
-    if (this._stateMachine._currentState.Name == 'dance') {
+    if (this._stateMachine._currentState.Name === 'dance') {
       acc.multiplyScalar(0.0);
     }
 
@@ -325,7 +325,7 @@ class BasicCharacterController {
       _Q.setFromAxisAngle(_A, 4.0 * -Math.PI * timeInSeconds * this._acceleration.y);
       _R.multiply(_Q);
     }
-    if (this._stateMachine._currentState.Name == 'greet') {
+    if (this._stateMachine._currentState.Name === 'greet') {
       // Canvas._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100));
       // this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100));
       // console.log(Canvas(_LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100))));
@@ -457,7 +457,7 @@ class FiniteStateMachine {
     const prevState = this._currentState;
 
     if (prevState) {
-      if (prevState.Name == name) {
+      if (prevState.Name === name) {
         return;
       }
       prevState.Exit();
@@ -622,7 +622,7 @@ class WalkState extends State {
 
       curAction.enabled = true;
 
-      if (prevState.Name == 'run') {
+      if (prevState.Name === 'run') {
         const ratio = curAction.getClip().duration / prevAction.getClip().duration;
         curAction.time = prevAction.time * ratio;
       } else {
@@ -670,7 +670,7 @@ class RunState extends State {
 
       curAction.enabled = true;
 
-      if (prevState.Name == 'walk') {
+      if (prevState.Name === 'walk') {
         const ratio = curAction.getClip().duration / prevAction.getClip().duration;
         curAction.time = prevAction.time * ratio;
       } else {
