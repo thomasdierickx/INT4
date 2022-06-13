@@ -3,7 +3,6 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.mod
 import { FBXLoader } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/FBXLoader.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/GLTFLoader.js';
 
-
 class BasicCharacterControllerProxy {
   constructor(animations) {
     this._animations = animations;
@@ -69,7 +68,6 @@ class BasicCharacterController {
       loader.load('run.fbx', (a) => { _OnLoad('run', a); });
       loader.load('idle.fbx', (a) => { _OnLoad('idle', a); });
       loader.load('dance.fbx', (a) => { _OnLoad('dance', a); });
-      loader.load('greeting.fbx', (a) => { _OnLoad('greet', a); });
     });
   }
 
@@ -489,7 +487,6 @@ class CharacterFSM extends FiniteStateMachine {
     this._AddState('walk', WalkState);
     this._AddState('run', RunState);
     this._AddState('dance', DanceState);
-    this._AddState('greet', GreetState);
   }
 };
 
@@ -554,57 +551,6 @@ class DanceState extends State {
   Update(_) {
   }
 };
-
-class GreetState extends State {
-  constructor(parent) {
-    super(parent);
-
-    this._FinishedCallback = () => {
-      this._Finished();
-    }
-  }
-
-  get Name() {
-    return 'greet';
-  }
-
-  Enter(prevState) {
-    const curAction = this._parent._proxy._animations['greet'].action;
-    const mixer = curAction.getMixer();
-    mixer.addEventListener('finished', this._FinishedCallback);
-
-    if (prevState) {
-      const prevAction = this._parent._proxy._animations[prevState.Name].action;
-
-      curAction.reset();
-      curAction.setLoop(THREE.LoopOnce, 1);
-      curAction.clampWhenFinished = true;
-      curAction.crossFadeFrom(prevAction, 0.2, true);
-      curAction.play();
-    } else {
-      curAction.play();
-    }
-  }
-
-  _Finished() {
-    this._Cleanup();
-    this._parent.SetState('idle');
-  }
-
-  _Cleanup() {
-    const action = this._parent._proxy._animations['greet'].action;
-
-    action.getMixer().removeEventListener('finished', this._CleanupCallback);
-  }
-
-  Exit() {
-    this._Cleanup();
-  }
-
-  Update(_) {
-  }
-};
-
 
 class WalkState extends State {
   constructor(parent) {
@@ -807,30 +753,11 @@ class Canvas {
     let light = new THREE.DirectionalLight(0xFFFFFF, 1.0);
     light.position.set(-100, 100, 100);
     light.target.position.set(0, 0, 0);
-    light.castShadow = true;
-    light.shadow.bias = -0.001;
-    light.shadow.mapSize.width = 4096;
-    light.shadow.mapSize.height = 4096;
-    light.shadow.camera.near = 0.1;
-    light.shadow.camera.far = 500.0;
-    light.shadow.camera.near = 0.5;
-    light.shadow.camera.far = 500.0;
-    light.shadow.camera.left = 50;
-    light.shadow.camera.right = -50;
-    light.shadow.camera.top = 50;
-    light.shadow.camera.bottom = -50;
     this._scene.add(light);
 
     // Adding light to scene
     light = new THREE.AmbientLight(0xFFFFFF, 0.25);
     this._scene.add(light);
-
-    // Point of interest
-    // let ineraction = new THREE.Geometry();
-    // ineraction.vertices.push(new THREE.Vector3(100, 0, 100));
-    // let dotMaterial = new THREE.PointsMaterial({ size: 200, sizeAttenuation: false });
-    // let dot = new THREE.Points(ineraction, dotMaterial);
-    // this._scene.add(dot);
 
     // Adding green plane
     const plane = new THREE.Mesh(
@@ -848,19 +775,25 @@ class Canvas {
 
     this._LoadAnimatedModel();
     this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(150, 0, 100), -Math.PI / 2);
-    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(300, 0, 100), -Math.PI / 1);
-    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(0, 0, 100), -Math.PI / 1);
+    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(300, 0, 100), -Math.PI / 1);
+    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(0, 0, 100), -Math.PI / 1);
     this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(150, 0, 0), - Math.PI / 2);
     this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(300, 0, 0), -Math.PI / 5);
     this._RAF();
-    // this._LoadModel();
+
+    for (let i = 0; i < 10; i++) {
+      let randomX = Math.floor(Math.random() * 500);
+      let randomZ = Math.floor(Math.random() * 500);
+      let randomScale = Math.floor(Math.random() * 5);
+      this._LoadModelTree(new THREE.Vector3(randomX, 0, randomZ), randomScale);
+    }
   }
 
   _LoadAnimatedModelAndPlay(path, modelFile, animFile, offset, modelRotation) {
     const loader = new FBXLoader();
     loader.setPath(path);
     loader.load(modelFile, (fbx) => {
-      fbx.scale.setScalar(0.25);
+      fbx.scale.setScalar(0.2);
       fbx.rotation.y = modelRotation;
       fbx.traverse(c => {
         c.castShadow = true;
@@ -879,17 +812,30 @@ class Canvas {
     });
   }
 
-  // _LoadModel() {
-  //   const loader = new GLTFLoader();
-  //   loader.load('./resources/school/stad.gltf', (gltf) => {
-  //     gltf.scene.traverse(c => {
-  //       c.castShadow = true;
-  //     });
-  //     gltf.scene.scale.setScalar(25);
-  //     gltf.scene.rotation.y = -Math.PI / 1.5;
-  //     this._scene.add(gltf.scene);
-  //   });
-  // }
+  _LoadModel() {
+    const loader = new GLTFLoader();
+    loader.load('./resources/school/stad2.glb', (gltf) => {
+      gltf.scene.traverse(c => {
+        c.castShadow = true;
+      });
+      gltf.scene.scale.setScalar(1);
+      gltf.scene.rotation.y = -Math.PI / 1.5;
+      this._scene.add(gltf.scene);
+    });
+  }
+
+  _LoadModelTree(position, scale) {
+    const loader = new GLTFLoader();
+    loader.load('./resources/school/maple/scene.gltf', (gltf) => {
+      gltf.scene.traverse(c => {
+        c.castShadow = true;
+      });
+      gltf.scene.scale.setScalar(5);
+      gltf.scene.rotation.y = scale; // -Math.PI / 1.5;
+      gltf.scene.position.copy(position);
+      this._scene.add(gltf.scene);
+    });
+  }
 
   _LoadAnimatedModel() {
     const params = {
@@ -938,6 +884,9 @@ class Canvas {
   }
 }
 
+window.onload = function () {
+  document.querySelector('.preloader').style.display = 'none';
+};
 
 let _APP = null;
 
