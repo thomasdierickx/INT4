@@ -780,13 +780,14 @@ class Canvas {
     this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(150, 0, 0), - Math.PI / 2);
     this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(300, 0, 0), -Math.PI / 5);
     this._RAF();
+    this._LoadModel();
 
-    for (let i = 0; i < 5; i++) {
-      let randomX = Math.floor(Math.random() * 500);
-      let randomZ = Math.floor(Math.random() * 500);
-      let randomScale = Math.floor(Math.random() * 5);
-      this._LoadModelTree(new THREE.Vector3(randomX, 0, randomZ), randomScale);
-    }
+    // for (let i = 0; i < 5; i++) {
+    //   let randomX = Math.floor(Math.random() * 500);
+    //   let randomZ = Math.floor(Math.random() * 500);
+    //   let randomScale = Math.floor(Math.random() * 5);
+    //   this._LoadModelTree(new THREE.Vector3(randomX, 0, randomZ), randomScale);
+    // }
   }
 
   _LoadAnimatedModelAndPlay(path, modelFile, animFile, offset, modelRotation) {
@@ -814,28 +815,28 @@ class Canvas {
 
   _LoadModel() {
     const loader = new GLTFLoader();
-    loader.load('./resources/school/stad2.glb', (gltf) => {
+    loader.load('./resources/school/stad.glb', (gltf) => {
       gltf.scene.traverse(c => {
         c.castShadow = true;
       });
-      gltf.scene.scale.setScalar(1);
-      gltf.scene.rotation.y = -Math.PI / 1.5;
+      gltf.scene.scale.setScalar(10);
+      gltf.scene.rotation.y = -Math.PI / 1;
       this._scene.add(gltf.scene);
     });
   }
 
-  _LoadModelTree(position, scale) {
-    const loader = new GLTFLoader();
-    loader.load('./resources/school/maple/scene.gltf', (gltf) => {
-      gltf.scene.traverse(c => {
-        c.castShadow = true;
-      });
-      gltf.scene.scale.setScalar(5);
-      gltf.scene.rotation.y = scale; // -Math.PI / 1.5;
-      gltf.scene.position.copy(position);
-      this._scene.add(gltf.scene);
-    });
-  }
+  // _LoadModelTree(position, scale) {
+  //   const loader = new GLTFLoader();
+  //   loader.load('./resources/school/maple/scene.gltf', (gltf) => {
+  //     gltf.scene.traverse(c => {
+  //       c.castShadow = true;
+  //     });
+  //     gltf.scene.scale.setScalar(5);
+  //     gltf.scene.rotation.y = scale; // -Math.PI / 1.5;
+  //     gltf.scene.position.copy(position);
+  //     this._scene.add(gltf.scene);
+  //   });
+  // }
 
   _LoadAnimatedModel() {
     const params = {
