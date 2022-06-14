@@ -808,6 +808,7 @@ class Canvas {
     this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(50, 0, 50), -Math.PI / 1.5);
     this._RAF();
     this._LoadModel();
+    this._LoadModel2();
 
     // for (let i = 0; i < 5; i++) {
     //   let randomX = Math.floor(Math.random() * 500);
@@ -815,6 +816,32 @@ class Canvas {
     //   let randomScale = Math.floor(Math.random() * 5);
     //   this._LoadModelTree(new THREE.Vector3(randomX, 0, randomZ), randomScale);
     // }
+  }
+
+  // _LoadModel2() {
+  //   const loader = new FBXLoader();
+  //   loader.setPath('./resources/');
+  //   loader.load('markthal_5.fbx', (fbx) => {
+  //     fbx.scale.setScalar(0.1);
+  //     fbx.rotation.y = -Math.PI / 2;
+  //     fbx.traverse(c => {
+  //       c.castShadow = true;
+  //     });
+  //     fbx.position.copy(new THREE.Vector3(1000, 0, 1000));
+  //     this._scene.add(fbx);
+  //   });
+  // }
+
+  _LoadModel2() {
+    const loader = new GLTFLoader();
+    loader.load('./resources/markthal_2.glb', (gltf) => {
+      gltf.scene.traverse(c => {
+        c.castShadow = true;
+      });
+      gltf.scene.scale.setScalar(1);
+      gltf.scene.rotation.y = -Math.PI / 1;
+      this._scene.add(gltf.scene);
+    });
   }
 
   _LoadAnimatedModelAndPlay(path, modelFile, animFile, offset, modelRotation) {
