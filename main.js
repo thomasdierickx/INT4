@@ -73,10 +73,10 @@ class BasicCharacterController {
 
   get Position() {
     // First npc interaction
-    if (this._position.x > 130 && this._position.x < 170 && this._position.z > 80 && this._position.z < 120) {
+    if (this._position.x > 480 && this._position.x < 520 && this._position.z > 180 && this._position.z < 220) {
       document.getElementById("sectionChange").style.visibility = "visible"
     }
-    if (this._position.x < 130) {
+    if (this._position.x < 480) {
       document.getElementById("sectionChange").style.visibility = "hidden";
       document.getElementById("sectionChange2").style.visibility = "hidden";
       document.getElementById("sectionChange3").style.visibility = "hidden";
@@ -84,7 +84,7 @@ class BasicCharacterController {
       document.getElementById("sectionChangeReaction2").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction3").style.visibility = "hidden";
     }
-    if (this._position.x > 170) {
+    if (this._position.x > 520) {
       document.getElementById("sectionChange").style.visibility = "hidden";
       document.getElementById("sectionChange2").style.visibility = "hidden";
       document.getElementById("sectionChange3").style.visibility = "hidden";
@@ -120,10 +120,10 @@ class BasicCharacterController {
     };
 
     // NPC 2 interaction
-    if (this._position.x > 280 && this._position.x < 320 && this._position.z > 80 && this._position.z < 120) {
+    if (this._position.x > 480 && this._position.x < 520 && this._position.z > -180 && this._position.z < -220) {
       document.getElementById("sectionChangeNPC2").style.visibility = "visible"
     }
-    if (this._position.x < 280) {
+    if (this._position.x < 480) {
       document.getElementById("sectionChangeNPC2").style.visibility = "hidden";
       document.getElementById("sectionChange2NPC2").style.visibility = "hidden";
       document.getElementById("sectionChange3NPC2").style.visibility = "hidden";
@@ -131,7 +131,7 @@ class BasicCharacterController {
       document.getElementById("sectionChangeReaction2NPC2").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction3NPC2").style.visibility = "hidden";
     }
-    if (this._position.x > 320) {
+    if (this._position.x > 520) {
       document.getElementById("sectionChangeNPC2").style.visibility = "hidden";
       document.getElementById("sectionChange2NPC2").style.visibility = "hidden";
       document.getElementById("sectionChange3NPC2").style.visibility = "hidden";
@@ -167,10 +167,10 @@ class BasicCharacterController {
     };
 
     // NPC 3 interaction
-    if (this._position.x > -20 && this._position.x < 20 && this._position.z > 80 && this._position.z < 120) {
+    if (this._position.x > 680 && this._position.x < 720 && this._position.z > 80 && this._position.z < 120) {
       document.getElementById("sectionChangeNPC3").style.visibility = "visible"
     }
-    if (this._position.x < -20) {
+    if (this._position.x < 680) {
       document.getElementById("sectionChangeNPC3").style.visibility = "hidden";
       document.getElementById("sectionChange2NPC3").style.visibility = "hidden";
       document.getElementById("sectionChange3NPC3").style.visibility = "hidden";
@@ -178,7 +178,7 @@ class BasicCharacterController {
       document.getElementById("sectionChangeReaction2NPC3").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction3NPC3").style.visibility = "hidden";
     }
-    if (this._position.x > 20) {
+    if (this._position.x > 720) {
       document.getElementById("sectionChangeNPC3").style.visibility = "hidden";
       document.getElementById("sectionChange2NPC3").style.visibility = "hidden";
       document.getElementById("sectionChange3NPC3").style.visibility = "hidden";
@@ -214,7 +214,7 @@ class BasicCharacterController {
     };
 
     // NPC 4 interaction
-    if (this._position.x > 130 && this._position.x < 170 && this._position.z > -20 && this._position.z < 20) {
+    if (this._position.x > 130 && this._position.x < 170 && this._position.z > -180 && this._position.z < 220) {
       document.getElementById("sectionChangeNPC4").style.visibility = "visible"
     }
     if (this._position.x < 130) {
@@ -258,6 +258,27 @@ class BasicCharacterController {
       document.getElementById("sectionChange3NPC4").style.display = "none";
       document.getElementById("sectionChangeReaction3NPC4").style.visibility = "visible";
       this.UpdateState();
+    };
+    // NPC 5 interaction
+    if (this._position.x > 30 && this._position.x < 70 && this._position.z > 30 && this._position.z < 70) {
+      document.getElementById("sectionChangeNPC5").style.visibility = "visible"
+    }
+    if (this._position.x < 30) {
+      document.getElementById("sectionChangeNPC5").style.visibility = "hidden";
+      document.getElementById("sectionChange2NPC5").style.visibility = "hidden";
+    }
+    if (this._position.x > 70) {
+      document.getElementById("sectionChangeNPC5").style.visibility = "hidden";
+      document.getElementById("sectionChange2NPC5").style.visibility = "hidden";
+    }
+
+    document.getElementById("answer1NPC5").onclick = function () {
+      document.getElementById("sectionChangeNPC5").style.display = "none";
+      document.getElementById("sectionChange2NPC5").style.visibility = "visible";
+    };
+
+    document.getElementById("answer2NPC5").onclick = function () {
+      document.getElementById("sectionChange2NPC5").style.display = "none";
     };
     return this._position;
   }
@@ -773,12 +794,18 @@ class Canvas {
     this._mixers = [];
     this._previousRAF = null;
 
+    // Laad het speelbaar model
     this._LoadAnimatedModel();
-    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(150, 0, 100), -Math.PI / 2);
-    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(300, 0, 100), -Math.PI / 1);
-    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(0, 0, 100), -Math.PI / 1);
-    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(150, 0, 0), - Math.PI / 2);
-    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(300, 0, 0), -Math.PI / 5);
+    // Eerste NPC
+    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(500, 0, 200), -Math.PI / 2);
+    // Tweede NPC
+    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(500, 0, -200), -Math.PI / 3);
+    // Derde NPC
+    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(700, 0, 100), -Math.PI / 2);
+    // Vierde NPC
+    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(150, 0, -200), - Math.PI / 2);
+    // Welkom NPC
+    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(50, 0, 50), -Math.PI / 1.5);
     this._RAF();
     this._LoadModel();
 
@@ -819,7 +846,7 @@ class Canvas {
       gltf.scene.traverse(c => {
         c.castShadow = true;
       });
-      gltf.scene.scale.setScalar(10);
+      gltf.scene.scale.setScalar(12);
       gltf.scene.rotation.y = -Math.PI / 1;
       this._scene.add(gltf.scene);
     });
