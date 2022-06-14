@@ -815,7 +815,7 @@ class Canvas {
 
   _LoadModel() {
     const loader = new GLTFLoader();
-    loader.load('./resources/school/stad.glb', (gltf) => {
+    loader.load('./resources/school/Stad.glb', (gltf) => {
       gltf.scene.traverse(c => {
         c.castShadow = true;
       });
