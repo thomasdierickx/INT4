@@ -821,7 +821,7 @@ class Canvas {
   // _LoadModel2() {
   //   const loader = new FBXLoader();
   //   loader.setPath('./resources/');
-  //   loader.load('markthal_5.fbx', (fbx) => {
+  //   loader.load('markthal_2.fbx', (fbx) => {
   //     fbx.scale.setScalar(0.1);
   //     fbx.rotation.y = -Math.PI / 2;
   //     fbx.traverse(c => {
@@ -939,16 +939,36 @@ class Canvas {
   }
 }
 
-window.onload = function () {
-  document.querySelector('.preloader').style.display = 'none';
-};
-
 let _APP = null;
 
 window.addEventListener('DOMContentLoaded', () => {
   _APP = new Canvas();
 });
 
+document.getElementById("btn").onclick = function () {
+  let obj = document.querySelector('.preloader');
+  let inner = document.querySelector('.preloader_inner');
+  let page = document.querySelector('.page');
+  obj.classList.add('show');
+  page.classList.remove('show');
+  var w = 0,
+    t = setInterval(function () {
+      w = w + 1;
+      inner.textContent = w + '%';
+      if (w === 100) {
+        obj.style.display = "none";
+        inner.style.display = "none";
+        page.style.display = "none";
+        document.querySelector('.outline').style.display = "flex";
+        clearInterval(t);
+        w = 0;
+      }
+    }, 20);
+};
+
+document.getElementById("btnClose").onclick = function () {
+  document.querySelector('.outline').style.display = "none";
+}
 
 function _LerpOverFrames(frames, t) {
   const s = new THREE.Vector3(0, 0, 0);

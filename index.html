@@ -11,9 +11,44 @@
     rel="stylesheet">
 </head>
 <body>
-  <div class="preloader"><h2>Testing</h2></div>
-  <script src="./main.js" type="module">
-  </script>
+  <section class="preloader">
+    <div class="preloader_inner">100%</div>
+  </section>
+  
+  <section class="page">
+    <button id="btn" class="btn__start">Start</button>
+  </section>
+
+  <section class="outline">
+    <div class="section__intro">
+      <article class="article__intro">
+            <h3 class="article__intro--title">Aliter</h3>
+            <img src="resources/introControls.png" alt="School" class="article__intro--img" />
+            <p class="article__intro--text">
+              Helper text
+            </p>
+          </article>
+
+          <article class="article__intro">
+            <h3 class="article__intro--title">Controls</h3>
+            <img src="resources/introControls.png" alt="Controls" class="article__intro--img"/>
+            <p class="article__intro--text">
+              Helper text
+            </p>
+          </article>
+
+          <article class="article__intro">
+            <h3 class="article__intro--title">Purpose</h3>
+            <img src="resources/introControls.png" alt="Purpose" class="article__intro--img" />
+            <p class="article__intro--text">
+              Helper text
+            </p>
+          </article>
+    </div>
+    <button id="btnClose" class="btn__start btn__start2">Start</button>
+  </section>
+
+
   <!-- NPC 1 -->
   <section class="section" id="sectionChange">
     <h2 class="h1">Max</h2>
@@ -302,5 +337,8 @@
       &#8594; Zal ik zeker doen!
     </button>
   </section>
+
+  <script src="./main.js" type="module">
+  </script>
 </body>
 </html>
