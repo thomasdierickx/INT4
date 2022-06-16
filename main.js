@@ -437,10 +437,10 @@ class BasicCharacterControllerInput {
         this._keys.left = false;
         break;
       case 65: // a
-        this._keys.forward = true;
+        this._keys.forward = false;
         break;
       case 87: // w
-        this._keys.left = true;
+        this._keys.left = false;
         break;
       case 83: // s
         this._keys.backward = false;
