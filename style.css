@@ -87,12 +87,18 @@ button {
   color: white;
 }
 
-.page {
+.section__start {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+}
+
+.page {
   margin: auto;
   width: 100vw;
   height: 100vh;
@@ -103,11 +109,19 @@ button {
   font-family: monospace;
   font-weight: 300;
   color: white;
+  opacity: 0.7;
   transition: all 0.5s ease;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 15rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: lighter;
 }
 
 .show {
@@ -118,15 +132,15 @@ button {
 
 .btn__start {
   background: #4c9b00;
-  border-radius: 50rem;
+  border-radius: 1rem;
   box-shadow: #4c9b00 0 1rem 2rem -1rem;
   box-sizing: border-box;
   color: #FFFFFF;
   cursor: pointer;
   font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
-  font-size: 3rem;
-  font-weight: bold;
-  padding: 2rem 3rem;
+  font-size: 2rem;
+  font-weight: lighter;
+  padding: 1rem 3rem;
   text-transform: uppercase;
 }
 
@@ -183,8 +197,13 @@ button {
   width: 30rem;
 }
 
+.purpose {
+  width: 100%
+}
+
 .article__intro--text {
   font-size: 1rem;
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0 2rem 0 2rem;
 }
