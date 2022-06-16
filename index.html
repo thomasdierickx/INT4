@@ -22,12 +22,14 @@
     </article>
   </section>
 
-  <section class="outline">
+  <section class="outline" id="outline">
     <div class="section__intro">
       <article class="article__intro">
             <h3 class="article__intro--title">Aliter</h3>
-            <img src="resources/introControls.png" alt="School" class="article__intro--img" />
-            <p class="article__intro--text">
+            <video autoplay muted loop id="myVideo" class="video">
+              <source src="./resources/background.mov" type="video/mp4">
+            </video>
+            <p class="article__intro--text first">
               Aliter is een middelbare school waar verschillende personen met een andere geaardheid zitten. Deze personen zitten allemaal met hun eigen unieke problemen die jij helpt oplossen!
             </p>
           </article>
@@ -48,8 +50,18 @@
             </p>
           </article>
     </div>
-    <button id="btnClose" class="btn__start btn__start2">Start</button>
+    <p class="helperText">
+      --- click anywhere to continue ---
+    </p>
   </section>
+  <!-- <section class="characterSelection" id="characterSelection">
+    <h2 class="helperText">Choose your character</h2>
+    <div class="section__intro">
+      <button class="btnCharacter" id="Remy">Remy</button>
+      <button class="btnCharacter" id="Kate">Kate</button>
+      <button class="btnCharacter" id="James">James</button>
+    </div>
+  </section> -->
 
 
   <!-- NPC 1 -->

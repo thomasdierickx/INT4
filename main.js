@@ -30,13 +30,25 @@ class BasicCharacterController {
     this._stateMachine = new CharacterFSM(
       new BasicCharacterControllerProxy(this._animations));
 
-    this._LoadModels();
+    // let nameFileX
+
+    // document.getElementById('Remy').onclick = function () {
+    //   nameFileX = 'Remy.fbx';
+    // }
+    // document.getElementById('Kate').onclick = function () {
+    //   nameFileX = 'Kate.fbx';
+    // }
+    // document.getElementById('James').onclick = function () {
+    //   nameFileX = 'James.fbx';
+    // }
+
+    this._LoadModels('Remy.fbx');
   }
 
-  _LoadModels() {
+  _LoadModels(nameFile) {
     const loader = new FBXLoader();
     loader.setPath('./resources/character/');
-    loader.load('Remy.fbx', (fbx) => {
+    loader.load(nameFile, (fbx) => {
       fbx.scale.setScalar(0.1);
       fbx.traverse(c => {
         c.castShadow = true;
@@ -425,6 +437,10 @@ class BasicCharacterControllerInput {
       case 69: // e ==> interact
         this._keys.interact = true;
         break;
+      case 82: // r ==> reload
+        location.reload();
+        break;
+      default:
     }
   }
 
@@ -457,6 +473,10 @@ class BasicCharacterControllerInput {
       case 69: // e ==> interact
         this._keys.interact = false;
         break;
+      case 82: // r ==> reload
+        location.reload();
+        break;
+      default:
     }
   }
 };
@@ -807,32 +827,11 @@ class Canvas {
     // Welkom NPC
     this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(50, 0, 50), -Math.PI / 1.5);
     this._RAF();
-    this._LoadModel();
-    this._LoadModel2();
-
-    // for (let i = 0; i < 5; i++) {
-    //   let randomX = Math.floor(Math.random() * 500);
-    //   let randomZ = Math.floor(Math.random() * 500);
-    //   let randomScale = Math.floor(Math.random() * 5);
-    //   this._LoadModelTree(new THREE.Vector3(randomX, 0, randomZ), randomScale);
-    // }
+    this._LoadModelStad();
+    this._LoadModelMarkthal();
   }
 
-  // _LoadModel2() {
-  //   const loader = new FBXLoader();
-  //   loader.setPath('./resources/');
-  //   loader.load('markthal_2.fbx', (fbx) => {
-  //     fbx.scale.setScalar(0.1);
-  //     fbx.rotation.y = -Math.PI / 2;
-  //     fbx.traverse(c => {
-  //       c.castShadow = true;
-  //     });
-  //     fbx.position.copy(new THREE.Vector3(1000, 0, 1000));
-  //     this._scene.add(fbx);
-  //   });
-  // }
-
-  _LoadModel2() {
+  _LoadModelMarkthal() {
     const loader = new GLTFLoader();
     loader.load('./resources/markthal_2.glb', (gltf) => {
       gltf.scene.traverse(c => {
@@ -867,9 +866,9 @@ class Canvas {
     });
   }
 
-  _LoadModel() {
+  _LoadModelStad() {
     const loader = new GLTFLoader();
-    loader.load('./resources/school/Stad.glb', (gltf) => {
+    loader.load('./resources/school/StadV3.glb', (gltf) => {
       gltf.scene.traverse(c => {
         c.castShadow = true;
       });
@@ -878,19 +877,6 @@ class Canvas {
       this._scene.add(gltf.scene);
     });
   }
-
-  // _LoadModelTree(position, scale) {
-  //   const loader = new GLTFLoader();
-  //   loader.load('./resources/school/maple/scene.gltf', (gltf) => {
-  //     gltf.scene.traverse(c => {
-  //       c.castShadow = true;
-  //     });
-  //     gltf.scene.scale.setScalar(5);
-  //     gltf.scene.rotation.y = scale; // -Math.PI / 1.5;
-  //     gltf.scene.position.copy(position);
-  //     this._scene.add(gltf.scene);
-  //   });
-  // }
 
   _LoadAnimatedModel() {
     const params = {
@@ -960,13 +946,14 @@ document.getElementById("btn").onclick = function () {
         inner.style.display = "none";
         page.style.display = "none";
         document.querySelector('.outline').style.display = "flex";
+        // document.querySelector('.characterSelection').style.display = "flex";
         clearInterval(t);
         w = 0;
       }
     }, 20);
 };
 
-document.getElementById("btnClose").onclick = function () {
+document.getElementById("outline").onclick = function () {
   document.querySelector('.outline').style.display = "none";
 }
 
