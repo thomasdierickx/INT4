@@ -105,15 +105,15 @@ class BasicCharacterController {
       document.getElementById("sectionChangeReaction3").style.visibility = "hidden";
     }
 
-    document.getElementById("answer1").onclick = function () {
-      document.getElementById("sectionChange").style.display = "none";
-      document.getElementById("sectionChange2").style.visibility = "visible";
-    };
-
     document.getElementById("answer2").onclick = function () {
       document.getElementById("sectionChange2").style.display = "none";
       document.getElementById("sectionChange3").style.visibility = "visible";
     };
+
+    document.getElementById("noClose").onclick = function () {
+      document.getElementById("sectionChange2.2NPC2").style.display = "none";
+      document.getElementById("sectionChange2.2NPC4").style.display = "none";
+    }
 
     document.getElementById("20").onclick = function () {
       document.getElementById("sectionChange3").style.display = "none";
@@ -122,38 +122,53 @@ class BasicCharacterController {
 
     document.getElementById("60").onclick = function () {
       document.getElementById("sectionChange3").style.display = "none";
-      document.getElementById("sectionChangeReaction2").style.visibility = "visible";
+      document.getElementById("sectionChangeReaction3").style.visibility = "visible";
     };
 
     document.getElementById("90").onclick = function () {
       document.getElementById("sectionChange3").style.display = "none";
-      document.getElementById("sectionChangeReaction3").style.visibility = "visible";
-      this.UpdateState();
+      document.getElementById("sectionChangeReaction2").style.visibility = "visible";
     };
 
     // NPC 2 interaction
-    if (this._position.x > 480 && this._position.x < 520 && this._position.z > -180 && this._position.z < -220) {
-      document.getElementById("sectionChangeNPC2").style.visibility = "visible"
+    if (this._position.x > 480 && this._position.x < 520 && this._position.z < -180 && this._position.z > -220) {
+      document.getElementById("sectionChangeNPC2").style.visibility = "visible";
     }
     if (this._position.x < 480) {
       document.getElementById("sectionChangeNPC2").style.visibility = "hidden";
       document.getElementById("sectionChange2NPC2").style.visibility = "hidden";
+      document.getElementById("sectionChange2.1NPC2").style.visibility = "hidden";
+      document.getElementById("sectionChange2.2NPC2").style.visibility = "hidden";
       document.getElementById("sectionChange3NPC2").style.visibility = "hidden";
-      document.getElementById("sectionChangeReactionNPC2").style.visibility = "hidden";
+      document.getElementById("sectionChange4NPC2").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction1NPC2").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction2NPC2").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction3NPC2").style.visibility = "hidden";
     }
     if (this._position.x > 520) {
       document.getElementById("sectionChangeNPC2").style.visibility = "hidden";
       document.getElementById("sectionChange2NPC2").style.visibility = "hidden";
+      document.getElementById("sectionChange2.1NPC2").style.visibility = "hidden";
+      document.getElementById("sectionChange2.2NPC2").style.visibility = "hidden";
       document.getElementById("sectionChange3NPC2").style.visibility = "hidden";
-      document.getElementById("sectionChangeReactionNPC2").style.visibility = "hidden";
+      document.getElementById("sectionChange4NPC2").style.visibility = "hidden";
+      document.getElementById("sectionChangeReaction1NPC2").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction2NPC2").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction3NPC2").style.visibility = "hidden";
     }
 
     document.getElementById("answer1NPC2").onclick = function () {
       document.getElementById("sectionChangeNPC2").style.display = "none";
+      document.getElementById("sectionChange2.1NPC2").style.visibility = "visible";
+    };
+
+    document.getElementById("answer1.2NPC2").onclick = function () {
+      document.getElementById("sectionChangeNPC2").style.display = "none";
+      document.getElementById("sectionChange2.2NPC2").style.visibility = "visible";
+    };
+
+    document.getElementById("answer2.1NPC2").onclick = function () {
+      document.getElementById("sectionChange2.1NPC2").style.display = "none";
       document.getElementById("sectionChange2NPC2").style.visibility = "visible";
     };
 
@@ -162,20 +177,45 @@ class BasicCharacterController {
       document.getElementById("sectionChange3NPC2").style.visibility = "visible";
     };
 
+    document.getElementById("answer3NPC2").onclick = function () {
+      document.getElementById("sectionChange2NPC2").style.display = "none";
+      document.getElementById("sectionChange4NPC2").style.visibility = "visible";
+    };
+
     document.getElementById("20NPC2").onclick = function () {
       document.getElementById("sectionChange3NPC2").style.display = "none";
-      document.getElementById("sectionChangeReactionNPC2").style.visibility = "visible";
+      document.getElementById("sectionChange4NPC2").style.display = "none";
+      document.getElementById("sectionChangeReaction1NPC2").style.visibility = "visible";
+    };
+
+    document.getElementById("20.1NPC2").onclick = function () {
+      document.getElementById("sectionChange3NPC2").style.display = "none";
+      document.getElementById("sectionChange4NPC2").style.display = "none";
+      document.getElementById("sectionChangeReaction1NPC2").style.visibility = "visible";
     };
 
     document.getElementById("60NPC2").onclick = function () {
       document.getElementById("sectionChange3NPC2").style.display = "none";
+      document.getElementById("sectionChange4NPC2").style.display = "none";
       document.getElementById("sectionChangeReaction2NPC2").style.visibility = "visible";
+    };
+
+    document.getElementById("60.1NPC2").onclick = function () {
+      document.getElementById("sectionChange3NPC2").style.display = "none";
+      document.getElementById("sectionChange4NPC2").style.display = "none";
+      document.getElementById("sectionChangeReaction1NPC2").style.visibility = "visible";
     };
 
     document.getElementById("90NPC2").onclick = function () {
       document.getElementById("sectionChange3NPC2").style.display = "none";
+      document.getElementById("sectionChange4NPC2").style.display = "none";
       document.getElementById("sectionChangeReaction3NPC2").style.visibility = "visible";
-      this.UpdateState();
+    };
+
+    document.getElementById("90.1NPC2").onclick = function () {
+      document.getElementById("sectionChange3NPC2").style.display = "none";
+      document.getElementById("sectionChange4NPC2").style.display = "none";
+      document.getElementById("sectionChangeReaction1NPC2").style.visibility = "visible";
     };
 
     // NPC 3 interaction
@@ -226,13 +266,14 @@ class BasicCharacterController {
     };
 
     // NPC 4 interaction
-    if (this._position.x > 130 && this._position.x < 170 && this._position.z > -180 && this._position.z < 220) {
+    if (this._position.x > 130 && this._position.x < 170 && this._position.z < -180 && this._position.z > -220) {
       document.getElementById("sectionChangeNPC4").style.visibility = "visible"
     }
     if (this._position.x < 130) {
       document.getElementById("sectionChangeNPC4").style.visibility = "hidden";
       document.getElementById("sectionChange2NPC4").style.visibility = "hidden";
       document.getElementById("sectionChange3NPC4").style.visibility = "hidden";
+      document.getElementById("sectionChange4NPC4").style.visibility = "hidden";
       document.getElementById("sectionChangeReactionNPC4").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction2NPC4").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction3NPC4").style.visibility = "hidden";
@@ -241,6 +282,7 @@ class BasicCharacterController {
       document.getElementById("sectionChangeNPC4").style.visibility = "hidden";
       document.getElementById("sectionChange2NPC4").style.visibility = "hidden";
       document.getElementById("sectionChange3NPC4").style.visibility = "hidden";
+      document.getElementById("sectionChange4NPC4").style.visibility = "hidden";
       document.getElementById("sectionChangeReactionNPC4").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction2NPC4").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction3NPC4").style.visibility = "hidden";
@@ -248,6 +290,16 @@ class BasicCharacterController {
 
     document.getElementById("answer1NPC4").onclick = function () {
       document.getElementById("sectionChangeNPC4").style.display = "none";
+      document.getElementById("sectionChange2.1NPC4").style.visibility = "visible";
+    };
+
+    document.getElementById("answer1.2NPC4").onclick = function () {
+      document.getElementById("sectionChangeNPC4").style.display = "none";
+      document.getElementById("sectionChange2.2NPC4").style.visibility = "visible";
+    };
+
+    document.getElementById("answer2.1NPC4").onclick = function () {
+      document.getElementById("sectionChange2.1NPC4").style.display = "none";
       document.getElementById("sectionChange2NPC4").style.visibility = "visible";
     };
 
@@ -256,21 +308,47 @@ class BasicCharacterController {
       document.getElementById("sectionChange3NPC4").style.visibility = "visible";
     };
 
+    document.getElementById("answer3NPC4").onclick = function () {
+      document.getElementById("sectionChange2NPC4").style.display = "none";
+      document.getElementById("sectionChange4NPC4").style.visibility = "visible";
+    };
+
     document.getElementById("20NPC4").onclick = function () {
       document.getElementById("sectionChange3NPC4").style.display = "none";
+      document.getElementById("sectionChange4NPC4").style.display = "none";
+      document.getElementById("sectionChangeReactionNPC4").style.visibility = "visible";
+    };
+
+    document.getElementById("20.1NPC4").onclick = function () {
+      document.getElementById("sectionChange3NPC4").style.display = "none";
+      document.getElementById("sectionChange4NPC4").style.display = "none";
       document.getElementById("sectionChangeReactionNPC4").style.visibility = "visible";
     };
 
     document.getElementById("60NPC4").onclick = function () {
       document.getElementById("sectionChange3NPC4").style.display = "none";
+      document.getElementById("sectionChange4NPC4").style.display = "none";
       document.getElementById("sectionChangeReaction2NPC4").style.visibility = "visible";
+    };
+
+    document.getElementById("60.1NPC4").onclick = function () {
+      document.getElementById("sectionChange3NPC4").style.display = "none";
+      document.getElementById("sectionChange4NPC4").style.display = "none";
+      document.getElementById("sectionChangeReactionNPC4").style.visibility = "visible";
     };
 
     document.getElementById("90NPC4").onclick = function () {
       document.getElementById("sectionChange3NPC4").style.display = "none";
+      document.getElementById("sectionChange4NPC4").style.display = "none";
       document.getElementById("sectionChangeReaction3NPC4").style.visibility = "visible";
-      this.UpdateState();
     };
+
+    document.getElementById("90.1NPC4").onclick = function () {
+      document.getElementById("sectionChange3NPC4").style.display = "none";
+      document.getElementById("sectionChange4NPC4").style.display = "none";
+      document.getElementById("sectionChangeReactionNPC4").style.visibility = "visible";
+    };
+
     // NPC 5 interaction
     if (this._position.x > 30 && this._position.x < 70 && this._position.z > 30 && this._position.z < 70) {
       document.getElementById("sectionChangeNPC5").style.visibility = "visible"
@@ -292,6 +370,7 @@ class BasicCharacterController {
     document.getElementById("answer2NPC5").onclick = function () {
       document.getElementById("sectionChange2NPC5").style.display = "none";
     };
+
     return this._position;
   }
 
