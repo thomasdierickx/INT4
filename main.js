@@ -47,7 +47,7 @@ class BasicCharacterController {
 
   _LoadModels(nameFile) {
     const loader = new FBXLoader();
-    loader.setPath('./resources/character/');
+    loader.setPath('./assets/character/');
     loader.load(nameFile, (fbx) => {
       fbx.scale.setScalar(0.1);
       fbx.traverse(c => {
@@ -75,7 +75,7 @@ class BasicCharacterController {
       };
 
       const loader = new FBXLoader(this._manager);
-      loader.setPath('./resources/character/');
+      loader.setPath('./assets/character/');
       loader.load('WalkIP.fbx', (a) => { _OnLoad('walk', a); });
       loader.load('run.fbx', (a) => { _OnLoad('run', a); });
       loader.load('Idle.fbx', (a) => { _OnLoad('idle', a); });
@@ -357,9 +357,9 @@ class BasicCharacterController {
       _R.multiply(_Q);
     }
     if (this._stateMachine._currentState.Name === 'greet') {
-      // Canvas._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100));
-      // this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100));
-      // console.log(Canvas(_LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100))));
+      // Canvas._LoadAnimatedModelAndPlay('./assets/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100));
+      // this._LoadAnimatedModelAndPlay('./assets/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100));
+      // console.log(Canvas(_LoadAnimatedModelAndPlay('./assets/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100))));
     }
 
     controlObject.quaternion.copy(_R);
@@ -817,15 +817,15 @@ class Canvas {
     // Laad het speelbaar model
     this._LoadAnimatedModel();
     // Eerste NPC
-    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(500, 0, 200), -Math.PI / 2);
+    this._LoadAnimatedModelAndPlay('./assets/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(500, 0, 200), -Math.PI / 2);
     // Tweede NPC
-    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(500, 0, -200), -Math.PI / 3);
+    this._LoadAnimatedModelAndPlay('./assets/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(500, 0, -200), -Math.PI / 3);
     // Derde NPC
-    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(700, 0, 100), -Math.PI / 2);
+    this._LoadAnimatedModelAndPlay('./assets/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(700, 0, 100), -Math.PI / 2);
     // Vierde NPC
-    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(150, 0, -200), - Math.PI / 2);
+    this._LoadAnimatedModelAndPlay('./assets/npc/', 'npc_body.fbx', 'idleSad.fbx', new THREE.Vector3(150, 0, -200), - Math.PI / 2);
     // Welkom NPC
-    this._LoadAnimatedModelAndPlay('./resources/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(50, 0, 50), -Math.PI / 1.5);
+    this._LoadAnimatedModelAndPlay('./assets/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(50, 0, 50), -Math.PI / 1.5);
     this._RAF();
     this._LoadModelStad();
     this._LoadModelMarkthal();
@@ -833,7 +833,7 @@ class Canvas {
 
   _LoadModelMarkthal() {
     const loader = new GLTFLoader();
-    loader.load('./resources/markthal_2.glb', (gltf) => {
+    loader.load('./assets/markthal_2.glb', (gltf) => {
       gltf.scene.traverse(c => {
         c.castShadow = true;
       });
@@ -868,7 +868,7 @@ class Canvas {
 
   _LoadModelStad() {
     const loader = new GLTFLoader();
-    loader.load('./resources/school/StadV4.glb', (gltf) => {
+    loader.load('./assets/school/StadV4.glb', (gltf) => {
       gltf.scene.traverse(c => {
         c.castShadow = true;
       });
