@@ -135,19 +135,39 @@ class BasicCharacterController {
       document.getElementById("sectionChangeReaction2").style.visibility = "visible";
     };
 
-    document.getElementById("closeNPC2").onclick = function () {
-      document.getElementById("sectionChangeReaction1NPC2").style.display = "none";
-      document.getElementById("pngSchool").style.visibility = "visible";
+    document.getElementById("close1").onclick = function () {
+      document.getElementById("sectionChangeReaction").style.display = "none";
+      document.getElementById("pngSchool2").style.visibility = "visible";
     }
 
-    document.getElementById("close2NPC2").onclick = function () {
-      document.getElementById("sectionChangeReaction2NPC2").style.display = "none";
-      document.getElementById("pngSchool").style.visibility = "visible";
+    document.getElementById("close2").onclick = function () {
+      document.getElementById("sectionChangeReaction2").style.display = "none";
+      document.getElementById("pngSchool2").style.visibility = "visible";
     }
 
-    document.getElementById("close3NPC2").onclick = function () {
-      document.getElementById("sectionChangeReaction3NPC2").style.display = "none";
-      document.getElementById("pngSchool").style.visibility = "visible";
+    document.getElementById("close3").onclick = function () {
+      document.getElementById("sectionChangeReaction2").style.display = "none";
+      document.getElementById("pngSchool2").style.visibility = "visible";
+    }
+
+    document.getElementById("close4").onclick = function () {
+      document.getElementById("sectionChangeReaction2").style.display = "none";
+      document.getElementById("pngSchool2").style.visibility = "visible";
+    }
+
+    document.getElementById("close5").onclick = function () {
+      document.getElementById("sectionChangeReaction3").style.display = "none";
+      document.getElementById("pngSchool2").style.visibility = "visible";
+    }
+
+    document.getElementById("close6").onclick = function () {
+      document.getElementById("sectionChangeReaction3").style.display = "none";
+      document.getElementById("pngSchool2").style.visibility = "visible";
+    }
+
+    document.getElementById("close7").onclick = function () {
+      document.getElementById("sectionChangeReaction3").style.display = "none";
+      document.getElementById("pngSchool2").style.visibility = "visible";
     }
 
     // NPC 2 interaction
