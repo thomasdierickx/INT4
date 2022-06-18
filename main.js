@@ -105,6 +105,11 @@ class BasicCharacterController {
       document.getElementById("sectionChangeReaction3").style.visibility = "hidden";
     }
 
+    document.getElementById("answer1").onclick = function () {
+      document.getElementById("sectionChange").style.display = "none";
+      document.getElementById("sectionChange2").style.visibility = "visible";
+    };
+
     document.getElementById("answer2").onclick = function () {
       document.getElementById("sectionChange2").style.display = "none";
       document.getElementById("sectionChange3").style.visibility = "visible";
@@ -129,6 +134,21 @@ class BasicCharacterController {
       document.getElementById("sectionChange3").style.display = "none";
       document.getElementById("sectionChangeReaction2").style.visibility = "visible";
     };
+
+    document.getElementById("closeNPC2").onclick = function () {
+      document.getElementById("sectionChangeReaction1NPC2").style.display = "none";
+      document.getElementById("pngSchool").style.visibility = "visible";
+    }
+
+    document.getElementById("close2NPC2").onclick = function () {
+      document.getElementById("sectionChangeReaction2NPC2").style.display = "none";
+      document.getElementById("pngSchool").style.visibility = "visible";
+    }
+
+    document.getElementById("close3NPC2").onclick = function () {
+      document.getElementById("sectionChangeReaction3NPC2").style.display = "none";
+      document.getElementById("pngSchool").style.visibility = "visible";
+    }
 
     // NPC 2 interaction
     if (this._position.x > 480 && this._position.x < 520 && this._position.z < -180 && this._position.z > -220) {
@@ -297,6 +317,22 @@ class BasicCharacterController {
       document.getElementById("sectionChange4NPC3").style.display = "none";
       document.getElementById("sectionChangeReaction1NPC3").style.visibility = "visible";
     };
+
+    document.getElementById("closeNPC3").onclick = function () {
+      document.getElementById("sectionChangeReaction1NPC3").style.display = "none";
+      document.getElementById("pngLieke").style.visibility = "visible";
+    }
+
+    document.getElementById("close2NPC3").onclick = function () {
+      document.getElementById("sectionChangeReaction2NPC3").style.display = "none";
+      document.getElementById("pngLieke").style.visibility = "visible";
+    }
+
+    document.getElementById("close3NPC3").onclick = function () {
+      document.getElementById("sectionChangeReaction3NPC3").style.display = "none";
+      document.getElementById("pngLieke").style.visibility = "visible";
+    }
+
     // NPC 4 interaction
     if (this._position.x > 130 && this._position.x < 170 && this._position.z < -180 && this._position.z > -220) {
       document.getElementById("sectionChangeNPC4").style.visibility = "visible"

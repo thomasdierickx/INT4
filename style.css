@@ -26,6 +26,34 @@ body {
   visibility: hidden;
 }
 
+.pngLieke {
+  width: 100vw;
+  height: 100vh;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url('./assets/facts_LiekeE.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  visibility: hidden;
+}
+
+.pngLieke {
+  width: 100vw;
+  height: 100vh;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url('./assets/facts_school.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  visibility: hidden;
+}
+
 .h1 {
   font-weight: bold;
   color: white;
