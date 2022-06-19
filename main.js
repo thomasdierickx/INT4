@@ -889,6 +889,19 @@ class Canvas {
     this._LoadAnimatedModelAndPlay('./assets/npc/', 'npc.fbx', 'idleSad.fbx', new THREE.Vector3(150, 0, -200), - Math.PI / 2);
     this._RAF();
     this._LoadModelStad();
+    this._LoadModelMarkthal();
+  }
+
+  _LoadModelMarkthal() {
+    const loader = new GLTFLoader();
+    loader.load('./assets/markthal_2.glb', (gltf) => {
+      gltf.scene.traverse(c => {
+        c.castShadow = true;
+      });
+      gltf.scene.scale.setScalar(1);
+      gltf.scene.rotation.y = -Math.PI / 1;
+      this._scene.add(gltf.scene);
+    });
   }
 
   _LoadAnimatedModelAndPlay(path, modelFile, animFile, offset, modelRotation) {
