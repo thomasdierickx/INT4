@@ -18,11 +18,39 @@
   <section class="section__start">
     <article class="page">
     <h1 class="title">Aliter</h1>
+    <div class="section__intro">
+      <article class="article__intro">
+        <h3 class="article__intro--title">Aliter</h3>
+        <video autoplay muted loop id="myVideo" class="video">
+          <source src="./assets/background.mov" type="video/mp4">
+        </video>
+        <p class="article__intro--text first">
+          Aliter is a middle school where different persons with a different gender are situated. These people all have their own unique problem and it's your job to fix it! Or just explore the world!
+        </p>
+      </article>
+    
+      <article class="article__intro">
+        <h3 class="article__intro--title">Controls</h3>
+        <img src="assets/introControls.png" alt="Controls" class="article__intro--img" />
+        <p class="article__intro--text">
+          use ZQSD,  WASD or the joystick to walk. Mouse, tab & enter to interact, shift to run and space to emote.
+        </p>
+      </article>
+    
+      <article class="article__intro">
+        <h3 class="article__intro--title">Purpose</h3>
+        <img src="assets/introPurpose.png" alt="Purpose" class="article__intro--img" />
+        <p class="article__intro--text">
+          The purpose of Aliter is to get more acceptance for the lgbtq+ community and to ensure the safety of the community
+          in public!
+        </p>
+      </article>
+    </div>
     <button id="btn" class="btn__start">Play</button>
     </article>
   </section>
 
-  <section class="outline" id="outline">
+  <!-- <section class="outline" id="outline">
     <div class="section__intro">
       <article class="article__intro">
             <h3 class="article__intro--title">Aliter</h3>
@@ -53,7 +81,7 @@
     <p class="helperText">
       --- click anywhere to continue ---
     </p>
-  </section>
+  </section> -->
   <!-- <section class="characterSelection" id="characterSelection">
     <h2 class="helperText">Choose your character</h2>
     <div class="section__intro">
@@ -68,22 +96,20 @@
   <section class="section" id="sectionChange">
     <h2 class="h1">Max</h2>
     <p class="p">
-      Hoi!? Mijn naam is max, ik zit hier ook op school. Ik heb een probleem zou jij mij willen helpen.
+      Hey!? My name is max! I'm also a student at Aliter and i have a problem, would you like to help me?
     </p>
     <button class="p intGood" id="answer1">
-      &#8594; Ja, ik help je wel!
+      &#8594; Yes, i would like to help you!
     </button>
     <button class="p intGood">
-      &#8594; Nee, ik heb nu geen tijd. (Walk away)
+      &#8594; No, i don't have time. (Walk away)
     </button>
   </section>
 
   <section class="section" id="sectionChange2">
     <h2 class="h1">Max</h2>
     <p class="p">
-      Fijn dat je me wilt helpen, ik word de laatste tijd veel gepest door mijn klasgenoten voor iets waar ik niks aan kan
-      veranderen. Het gaat om wie ik leuk vind… Ik vind namelijk een klasgenoot leuk, alleen heeft die hetzelfde geslacht als
-      mij.
+      I'm glad you want to help me. I get bullied a lot lately by my class mates for something i can't even change. It's about who i like... I like another classmate but he has the same gender as me.
     </p>
     <button class="p intGood" id="answer2">
       &#8594; click to continue
@@ -93,16 +119,16 @@
   <section class="section" id="sectionChange3">
     <h2 class="h1">Max</h2>
     <p class="p">
-      Ik wil dus hier wat tegen doen, wat zou je aanraden..
+      I want to change this, do you have any recommendations...
     </p>
     <button class="p intGood" id="20">
-      &#8594; Ik zou er niet meer over praten.
+      &#8594; I wouldn't talk about it anymore.
     </button>
     <button class="p intGood" id="60">
-      &#8594; Ik zou naar een leraar gaan!
+      &#8594; I would go to a teacher!
     </button>
     <button class="p intGood" id="90">
-      &#8594; Help je al om hulp gevraagd?
+      &#8594; Did you ask for help already?
     </button>
   </section>
 
@@ -110,7 +136,7 @@
   <section class="section" id="sectionChangeReaction">
     <h2 class="h1">Max</h2>
     <p class="p">
-      Hoezo niet, Ik kan niet doen alsof mijn gevoelens er niet zijn. Dat klinkt niet als iets wat goed is voor mij…
+      Why not? I can't fake my feelings as if they weren't there... That doesn't sound like something good for me.
     </p>
     <button class="p intGood" id="close1">
       &#8594; ...
@@ -120,33 +146,32 @@
   <section class="section" id="sectionChangeReaction2">
     <h2 class="h1">Max</h2>
     <p class="p">
-      Ik wil graag om hulp vragen maar ik zou niet weten waar, Heb jij ideeën waar ik om hulp zou kunnen vragen?
+      I would like to ask for help but i don't really know where... Do you have any ideas where i can go and ask for help?
     </p>
     <button class="p intGood" id="close2">
-      &#8594; Heb je al met je ouders gepraat?
+      &#8594; Talk to your parents?
     </button>
     <button class="p intGood" id="close3">
-      &#8594; Heb je al met een hulpgroep gepraat?
+      &#8594; A supportgroup might be a good idea!
     </button>
     <button class="p intGood" id="close4">
-      &#8594; Heb je al met de autoriteiten gepraat
+      &#8594; Have you considered the authoroties?
     </button>
   </section>
   <!-- 60 -->
   <section class="section" id="sectionChangeReaction3">
     <h2 class="h1">Max</h2>
     <p class="p">
-      Dat zou wel kunnen, alleen ik ben soms een beetje bang voor wat de leraar gaat zeggen.. Het kan zijn dat zij het ook
-      niet accepteren wat zou ik moeten vertellen…
+      That could be a solution. But i'm a bit afraid of what the might say... It could be that they won't accept it either. And i don't really know what to say.
     </p>
     <button class="p intGood" id="close5">
-      &#8594; Vertellen dat je gepest word.
+      &#8594; Tell them about the bullying.
     </button>
     <button class="p intGood" id="close6">
-      &#8594; Vertellen over je wie je leuk vind.
+      &#8594; Thell them who you like.
     </button>
     <button class="p intGood" id="close7">
-      &#8594; Vertellen dat je het moeilijk vind.
+      &#8594; Speak up on your problems.
     </button>
   </section>
   
@@ -158,21 +183,20 @@
   <section class="section" id="sectionChangeNPC2">
     <h2 class="h1">Mike</h2>
     <p class="p">
-      Yo!! hoe is het, jij zit toch in mijn klas. ik ben Mike! Heb je tijd om even te praten over iets waar ik mee zit? dat
-      zou ik heel tof vinden.
+      Yo!! How is everything going? You are in my class right? I'm Mike! Do you have time to talk, i'd really appreciate that!
     </p>
     <button class="p intGood" id="answer1NPC2">
-      &#8594; Ja tuurlijk ik help wel
+      &#8594; Of course, tell me!
     </button>
     <button class="p intGood" id="answer1.2NPC2">
-      &#8594; ik heb nu geen tijd
+      &#8594; Sorry, i don't have time.
     </button>
   </section>
   <!-- Ja -->
   <section class="section" id="sectionChange2.1NPC2">
     <h2 class="h1">Mike</h2>
     <p class="p">
-      Cool, fijn dat je tijd vrij kan maken!
+      Cool, glad you could spare some time for me!
     </p>
     <button class="p intGood" id="answer2.1NPC2">
       &#8594; click to continue
@@ -182,7 +206,7 @@
   <section class="section" id="sectionChange2.2NPC2">
     <h2 class="h1">Mike</h2>
     <p class="p">
-      Dat is oké, ik hoor het wel als je tijd hebt!
+      It's oke, come back when you have time...
     </p>
     <button class="p intGood">
       &#8594; ...
@@ -192,30 +216,29 @@
   <section class="section" id="sectionChange2NPC2">
     <h2 class="h1">Mike</h2>
     <p class="p">
-      Ik zal je uitleggen wat er aan de hand is. Ik heb iets gekocht wat ik graag aan zou doen naar school, alleen ben ik bang
-      voor wat anderen er over gaan zeggen. Ken jij dat gevoel?
+      I have bought something that i'd like to wear to school. But i'm afraid of what the others might say or think. Do you know this feeling?
     </p>
     <button class="p intGood" id="answer2NPC2">
-      &#8594; Ja, dat gevoel ken ik wel.
+      &#8594; Yeah, i know that feeling!
     </button>
     <button class="p intGood" id="answer3NPC2">
-      &#8594; Nee, dat gevoel heb ik niet.
+      &#8594; No, i don't really...
     </button>
   </section>
   <!-- Keuze 1 -->
   <section class="section" id="sectionChange3NPC2">
     <h2 class="h1">Mike</h2>
     <p class="p">
-      Echt!! eng is dat he, ik wil er graag vanaf, wat doe jij als je dat gevoel hebt?
+      Really!!?? Scary isn't it, i'd like to get rid of it, what do you do when you have that feeling?
     </p>
     <button class="p intGood" id="20NPC2">
-      &#8594; Ik zoek hulp bij vrienden.
+      &#8594; I seek help with friends.
     </button>
     <button class="p intGood" id="60NPC2">
-      &#8594; Ik probeer mezelf er overheen te zetten.
+      &#8594; I try to get over it.
     </button>
     <button class="p intGood" id="90NPC2">
-      &#8594; Ik zoek hulp online.
+      &#8594; I look for help online.
     </button>
   </section>
 
@@ -223,17 +246,16 @@
   <section class="section" id="sectionChange4NPC2">
     <h2 class="h1">Mike</h2>
     <p class="p">
-      Wow, dat is cool dat je dat nooit hebt. Ik heb het best vaak want ik vind het eng om anders te zijn, kun je mij wat
-      advies geven over hoe ik minder bang ben om anders te zijn.
+      Wow, it's really cool you never have that. I have it quite regularly and i fond it really scary to be different. Can you give me some advice on how i could be less afraid to be different?
     </p>
     <button class="p intGood" id="20.1NPC2">
-      &#8594; Ik zoek hulp bij vrienden.
+      &#8594; I search for help from friends
     </button>
     <button class="p intGood" id="60.1NPC2">
-      &#8594; Ik probeer mezelf er overheen te zetten.
+      &#8594; I try to get myself over it.
     </button>
     <button class="p intGood" id="90.1NPC2">
-      &#8594; Ik zoek hulp online.
+      &#8594; I seek help online.
     </button>
   </section>
 
@@ -241,18 +263,17 @@
   <section class="section" id="sectionChangeReaction1NPC2">
     <h2 class="h1">Mike</h2>
     <p class="p">
-      Dat is tof, ik heb alleen niet zoveel vrienden met wie ik kan praten, stel wij zouden vrienden zijn, wat zou je advies
-      aan mij zijn!
+      Thats great, but i don't really have a lot of friends with whom i can talk. Imagine we are friends, what would be your advice?
     </p>
     <button class="p intGood" id="closeNPC2">
-      &#8594; Draag normale kleren
+      &#8594; ...
     </button>
   </section>
   <!-- 60 -->
   <section class="section" id="sectionChangeReaction2NPC2">
     <h2 class="h1">Mike</h2>
     <p class="p">
-      Dat is makkelijker gezegd dan gedaan.
+      That is easier said than done.
     </p>
     <button class="p intGood" id="close2NPC2">
       &#8594; ...
@@ -262,7 +283,7 @@
   <section class="section" id="sectionChangeReaction3NPC2">
     <h2 class="h1">Mike</h2>
     <p class="p">
-      Dat is wel handig want veel andere hebben dat probleem ook!
+      That comes in handy because many others suffer from the same problem also.
     </p>
     <button class="p intGood" id="close3NPC2">
       &#8594; ...
@@ -276,20 +297,20 @@
 <section class="section" id="sectionChangeNPC3">
   <h2 class="h1">Lieke</h2>
   <p class="p">
-  HI!, Ik ben Lieke, wat ik hier sta te doen?? goede vraag. Ik durf niet naar huis,, dus ik blijf liever op school wachten.
+    HI! I am Lieke, What am i doing here? Good question. I don't dare to go home... So i'm staying a bit longer.
   </p>
   <button class="p intGood" id="answer1NPC3">
-    &#8594; Waarom durf je niet naar huis dan?
+    &#8594; Why don't you just go home?
   </button>
   <button class="p intGood" id="answer1.2NPC3">
-    &#8594; Nee sorry, ik heb nu geen tijd
+    &#8594; No sorry, i don't have time...
   </button>
 </section>
 <!-- Ja -->
 <section class="section" id="sectionChange2.1NPC3">
   <h2 class="h1">Lieke</h2>
   <p class="p">
-    Cool, fijn dat je tijd vrij kan maken!
+    Cool, i'm glad you can make some time for me!
   </p>
   <button class="p intGood" id="answer2.1NPC3">
     &#8594; click to continue
@@ -299,7 +320,7 @@
 <section class="section" id="sectionChange2.2NPC3">
   <h2 class="h1">Lieke</h2>
   <p class="p">
-    Dat is oké, ik kan hiertoch wel nog effe staan.
+    It's fine, i can wait a little bit longer.
   </p>
   <button class="p intGood">
     &#8594; ...
@@ -309,29 +330,29 @@
 <section class="section" id="sectionChange2NPC3">
   <h2 class="h1">Lieke</h2>
   <p class="p">
-    Telkens ik alleen naar huis ga, spreken vreemde mensen mij aan. Ik heb altijd schrik dat ze mij iets willen aandoen.
+    Everytime when i go home alone, strangers try to speak to me. I'm afraid they might do something to me.
   </p>
   <button class="p intGood" id="answer2NPC3">
-    &#8594; Is dat al eens gebeurd dan?
+    &#8594; Has this already happened?
   </button>
   <button class="p intGood" id="answer3NPC3">
-    &#8594; Goed dat je wacht op je ouders!
+    &#8594; Good of you to wait on your parents!
   </button>
 </section>
 <!-- Keuze 1 -->
 <section class="section" id="sectionChange3NPC3">
   <h2 class="h1">Lieke</h2>
   <p class="p">
-    Ja, al meerdere keren. Wat zou ik hieraan kunnen doen voor extra veiligheid denk je?
+    Yes, several times already. What can i do for more protection?
   </p>
   <button class="p intGood" id="20NPC3">
-    &#8594; Stap met vrienden naar huis.
+    &#8594; Walk home with friends?
   </button>
   <button class="p intGood" id="60NPC3">
-    &#8594; Spreek hierover met je ouders.
+    &#8594; Talk about it with your parents
   </button>
   <button class="p intGood" id="90NPC3">
-    &#8594; Laat het aan de autoriteiten weten.
+    &#8594; Let the authorities know!
   </button>
 </section>
 
@@ -339,16 +360,16 @@
 <section class="section" id="sectionChange4NPC3">
   <h2 class="h1">Lieke</h2>
   <p class="p">
-    Ik vindt het echt eng dat mensen zo kunnen zijn. Ik lig er dag en nacht wakker van wanneer de volgende keer gaat zijn als er iets gebeurd.
+    It's scary people are like this... I think about it day and night of when the next time will be when something does happen again.
   </p>
   <button class="p intGood" id="20.1NPC3">
-    &#8594; Leer jezelf eens beschermen
+    &#8594; Learn to defend yourself.
   </button>
   <button class="p intGood" id="60.1NPC3">
-    &#8594; Je mag altijd met mij meestappen.
+    &#8594; You can always walk with me!
   </button>
   <button class="p intGood" id="90.1NPC3">
-    &#8594; Ik zou dit toch aangeven aan de leraren.
+    &#8594; I would say this to the teachers.
   </button>
 </section>
 
@@ -356,7 +377,7 @@
 <section class="section" id="sectionChangeReaction1NPC3">
   <h2 class="h1">Lieke</h2>
   <p class="p">
-    Wat zeg je nou?! Dit gaat echt niet helpen…
+    What are you saying? That isn't gonna help.
   </p>
   <button class="p intGood" id="closeNPC3">
     &#8594; ...
@@ -366,7 +387,7 @@
 <section class="section" id="sectionChangeReaction2NPC3">
   <h2 class="h1">Lieke</h2>
   <p class="p">
-    Dat is heel lief maar ik weet niet of dat de beste keuze is.
+    Thats very sweet but i don't know if that is the right choice.
   </p>
   <button class="p intGood" id="close2NPC3">
     &#8594; ...
@@ -376,7 +397,7 @@
 <section class="section" id="sectionChangeReaction3NPC3">
   <h2 class="h1">Lieke</h2>
   <p class="p">
-    Dat is een slim idee, ik ga er meteen mee in gesprek gaan. Ik hoop dat het snel wordt opgelost. Bedankt voor je hulp!
+    That's really smart, i'm going to have a conversation with them. I hope it'll get fixed soon. Thanks for your help!
   </p>
   <button class="p intGood" id="close3NPC3">
     &#8594; ...
@@ -389,20 +410,20 @@
   <section class="section" id="sectionChangeNPC4">
     <h2 class="h1">Joel</h2>
     <p class="p">
-      Hey, ik ben het Joel je beste vriend. Ik wil ergens met je over praten, het is wel persoonlijk. Heb je even tijd straks?
+      Hey, it's me Joel your best friend! I want to talk with you about something personal. Do you have some time?
     </p>
     <button class="p intGood" id="answer1NPC4">
-      &#8594; Ja tuurlijk ik help wel
+      &#8594; Of course!
     </button>
     <button class="p intGood" id="answer1.2NPC4">
-      &#8594; ik heb nu geen tijd
+      &#8594; No not really..
     </button>
   </section>
   <!-- Ja -->
   <section class="section" id="sectionChange2.1NPC4">
     <h2 class="h1">Joel</h2>
     <p class="p">
-      Echt waar! Dankjewel dat vind ik heel fijn!
+      Really! Thank you very much!
     </p>
     <button class="p intGood" id="answer2.1NPC4">
       &#8594; click to continue
@@ -412,7 +433,7 @@
   <section class="section" id="sectionChange2.2NPC4">
     <h2 class="h1">Joel</h2>
     <p class="p">
-      Oh dat is niet erg, kom maar terug als je tijd hebt.
+      Oh no worries...
     </p>
     <button class="p intGood" id="noClose">
       &#8594; ...
@@ -422,16 +443,16 @@
   <section class="section" id="sectionChange3NPC4">
     <h2 class="h1">Joel</h2>
     <p class="p">
-      Fijn dat je me wilt helpen, ik voel me de laatste heel onzeker. Niet alleen over mezelf maar ook op wie ik verliefd ben. Ik denk dat ik voor hetzelfde geslacht ben… Is dit normaal?
+    Lately, i feel very insecure. Not only of myself but also but also on the person i'm in love with. I think i am in love with a person with the same gender as me... Is this normal?
     </p>
     <button class="p intGood" id="20NPC4">
-      &#8594; Nee dat vind ik niet normaal.
+      &#8594; No, that is not normal
     </button>
     <button class="p intGood" id="60NPC4">
-      &#8594; Ik zou toch eens praten met een leraar.
+      &#8594; I would talk to a teacher if i were you
     </button>
     <button class="p intGood" id="90NPC4">
-      &#8594; Dat is zeker en vast wel normaal!
+      &#8594; That's very normal and you shouldn't feel ashamed about it.
     </button>
   </section>
   
@@ -439,7 +460,7 @@
   <section class="section" id="sectionChangeReactionNPC4">
     <h2 class="h1">Joel</h2>
     <p class="p">
-      Hoezo niet, Ik kan niet doen alsof mijn gevoelens er niet zijn. Dat klinkt niet als iets wat goed is voor mij…
+      Why not? I can't fake as if my feelings aren't there. That doesn't sound right to me...
     </p>
     <button class="p intGood" id="close">
       &#8594; ...
@@ -449,43 +470,43 @@
   <section class="section" id="sectionChangeReaction2NPC4">
     <h2 class="h1">Joel</h2>
     <p class="p">
-      Ik schaam mij hier enorm voor…
+      I am deeply ashamed about this...
     </p>
     <button class="p intGood" id="close">
-      &#8594; Ben gewoon wie je bent en voor de rest heeft niemand daar zaken mee
+      &#8594; Just be yourself!
     </button>
   </section>
   <!-- 90 -->
   <section class="section" id="sectionChangeReaction3NPC4">
     <h2 class="h1">Joel</h2>
     <p class="p">
-      Ik wil graag om hulp vragen maar ik zou niet weten waar, Heb jij ideeën waar ik om hulp zou kunnen vragen?
+      I really want to ask for help but i don't know where to. Do you have any ideas where i could go to ask for help?
     </p>
     <button class="p intGood" id="close">
-      &#8594; Ga bij een leraar of praat eens met je ouders!
+      &#8594; Talk to someone you can trust!
     </button>
   </section>
   <!-- NPC 5 -->
   <section class="section" id="sectionChangeNPC5">
     <h2 class="h1">Maxine</h2>
     <p class="p">
-      Hoi! Welkom op Aliter middelbare school, hier is iedereen welkom, groot klein, etc. noem maar op! Maar ik heb al gemerkt dat sommige studenten met problemen zitten, zou jij ze willen helpen?
+      Hoi! Welcome to Aliter middle school. Everybody is welcome here! There is a variety of students here but i have noticed they all have some problems... Would you like to help them?
     </p>
     <button class="p intGood" id="answer1NPC5">
-      &#8594; Ja, tuurlijk
+      &#8594; Yes, ofcourse!
     </button>
     <button class="p intGood">
-      &#8594; Nee, ik ga eerst wat verkenen (stap weg)
+      &#8594; No, i'm going to explore a bit (walk away)
     </button>
   </section>
   
   <section class="section" id="sectionChange2NPC5">
     <h2 class="h1">Maxine</h2>
     <p class="p">
-      Fijn dat je wilt helpen. Er zijn verschillende studenten die met problemen zitten, sommige persoonlijk andere weer niet. Het is aan jou om de studenten te helpen en te zorgen dat ze zich terug goed voelen!
+      I am glad you are willing to help! Some students struggle with problems, some personal & some not so personal. It is your job to help the students solve their problems & make them feel better again!
     </p>
     <button class="p intGood" id="answer2NPC5">
-      &#8594; Zal ik zeker doen!
+      &#8594; I will try my best!
     </button>
   </section>
 
