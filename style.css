@@ -256,12 +256,10 @@ button {
   align-items: center;
   justify-content: flex-start;
 
-  transition: width .2s, height .2s, border-color .2s, background-color .2s;
+  transition: border-color .2s, background-color .2s;
 }
 
 .article__intro:hover {
-  width: 30%;
-  height: 75%;
   border-color: #4c9b00;
   background-color: #4c9b00;
 }
@@ -274,11 +272,6 @@ button {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.article__intro--img {
-  width: 60%;
-  padding-bottom: 2rem;
-}
-
 .article__intro--text {
   font-size: 1.1rem;
   line-height: 1.8rem;
@@ -286,9 +279,4 @@ button {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 0 2rem 0 2rem;
   text-align: center;
-}
-
-.video {
-  width: 60%;
-  border-radius: 2rem;
 }
