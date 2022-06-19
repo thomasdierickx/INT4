@@ -1,5 +1,4 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
-
 import { FBXLoader } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/FBXLoader.js';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/GLTFLoader.js';
 
@@ -13,6 +12,7 @@ class BasicCharacterControllerProxy {
   }
 };
 
+// Regelt de character controller
 class BasicCharacterController {
   constructor(params) {
     this._Init(params);
@@ -20,27 +20,19 @@ class BasicCharacterController {
 
   _Init(params) {
     this._params = params;
+    // Vertragen
     this._decceleration = new THREE.Vector3(-0.0005, -0.0001, -5.0);
+    // Optrekking
     this._acceleration = new THREE.Vector3(1, 0.25, 250.0);
+    // Snelheid
     this._velocity = new THREE.Vector3(0, 0, 0);
+    // Positie
     this._position = new THREE.Vector3();
 
     this._animations = {};
     this._input = new BasicCharacterControllerInput();
     this._stateMachine = new CharacterFSM(
       new BasicCharacterControllerProxy(this._animations));
-
-    // let nameFileX
-
-    // document.getElementById('Remy').onclick = function () {
-    //   nameFileX = 'Remy.fbx';
-    // }
-    // document.getElementById('Kate').onclick = function () {
-    //   nameFileX = 'Kate.fbx';
-    // }
-    // document.getElementById('James').onclick = function () {
-    //   nameFileX = 'James.fbx';
-    // }
 
     this._LoadModels('player.fbx');
   }
@@ -79,7 +71,6 @@ class BasicCharacterController {
       loader.load('walk.fbx', (a) => { _OnLoad('walk', a); });
       loader.load('run.fbx', (a) => { _OnLoad('run', a); });
       loader.load('idle.fbx', (a) => { _OnLoad('idle', a); });
-      loader.load('dance.fbx', (a) => { _OnLoad('dance', a); });
     });
   }
 
@@ -427,18 +418,15 @@ class BasicCharacterController {
     return this._position;
   }
 
-  UpdateState() {
-    let canvas2 = new Canvas();
-    console.log("Dit werkt", canvas2);
-  }
-
   get Rotation() {
     if (!this._target) {
+      // Quaternion represents rotation doormiddel van XYZW components
       return new THREE.Quaternion();
     }
     return this._target.quaternion;
   }
 
+  // Update het frame
   Update(timeInSeconds) {
     if (!this._stateMachine._currentState) {
       return;
@@ -467,11 +455,6 @@ class BasicCharacterController {
     if (this._input._keys.shift) {
       acc.multiplyScalar(2.0);
     }
-
-    if (this._stateMachine._currentState.Name === 'dance') {
-      acc.multiplyScalar(0.0);
-    }
-
     if (this._input._keys.forward) {
       velocity.z += acc.z * timeInSeconds;
     }
@@ -479,7 +462,10 @@ class BasicCharacterController {
       velocity.z -= acc.z * timeInSeconds;
     }
     if (this._input._keys.left) {
+      // Zet een positie neer
       _A.set(0, 1, 0);
+      // zet een quaternion van rotatie gemaakt door de Axis & Angle
+      // Axis is normaal terwijl Angle in radialen is
       _Q.setFromAxisAngle(_A, 4.0 * Math.PI * timeInSeconds * this._acceleration.y);
       _R.multiply(_Q);
     }
@@ -487,11 +473,6 @@ class BasicCharacterController {
       _A.set(0, 1, 0);
       _Q.setFromAxisAngle(_A, 4.0 * -Math.PI * timeInSeconds * this._acceleration.y);
       _R.multiply(_Q);
-    }
-    if (this._stateMachine._currentState.Name === 'greet') {
-      // Canvas._LoadAnimatedModelAndPlay('./assets/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100));
-      // this._LoadAnimatedModelAndPlay('./assets/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100));
-      // console.log(Canvas(_LoadAnimatedModelAndPlay('./assets/npc/', 'npc_body.fbx', 'greeting.fbx', new THREE.Vector3(150, 0, 100))));
     }
 
     controlObject.quaternion.copy(_R);
@@ -560,9 +541,6 @@ class BasicCharacterControllerInput {
       case 68: // d
         this._keys.right = true;
         break;
-      case 32: // SPACE
-        this._keys.space = true;
-        break;
       case 16: // SHIFT
         this._keys.shift = true;
         break;
@@ -595,9 +573,6 @@ class BasicCharacterControllerInput {
         break;
       case 68: // d
         this._keys.right = false;
-        break;
-      case 32: // SPACE
-        this._keys.space = false;
         break;
       case 16: // SHIFT
         this._keys.shift = false;
@@ -659,7 +634,6 @@ class CharacterFSM extends FiniteStateMachine {
     this._AddState('idle', IdleState);
     this._AddState('walk', WalkState);
     this._AddState('run', RunState);
-    this._AddState('dance', DanceState);
   }
 };
 
@@ -672,57 +646,6 @@ class State {
   Enter() { }
   Exit() { }
   Update() { }
-};
-
-
-class DanceState extends State {
-  constructor(parent) {
-    super(parent);
-
-    this._FinishedCallback = () => {
-      this._Finished();
-    }
-  }
-
-  get Name() {
-    return 'dance';
-  }
-
-  Enter(prevState) {
-    const curAction = this._parent._proxy._animations['dance'].action;
-    const mixer = curAction.getMixer();
-    mixer.addEventListener('finished', this._FinishedCallback);
-
-    if (prevState) {
-      const prevAction = this._parent._proxy._animations[prevState.Name].action;
-
-      curAction.reset();
-      curAction.setLoop(THREE.LoopOnce, 1);
-      curAction.clampWhenFinished = true;
-      curAction.crossFadeFrom(prevAction, 0.2, true);
-      curAction.play();
-    } else {
-      curAction.play();
-    }
-  }
-
-  _Finished() {
-    this._Cleanup();
-    this._parent.SetState('idle');
-  }
-
-  _Cleanup() {
-    const action = this._parent._proxy._animations['dance'].action;
-
-    action.getMixer().removeEventListener('finished', this._CleanupCallback);
-  }
-
-  Exit() {
-    this._Cleanup();
-  }
-
-  Update(_) {
-  }
 };
 
 class WalkState extends State {
@@ -851,13 +774,11 @@ class IdleState extends State {
   Update(_, input) {
     if (input._keys.forward || input._keys.backward) {
       this._parent.SetState('walk');
-    } else if (input._keys.space) {
-      this._parent.SetState('dance');
     }
   }
 };
 
-
+// Zet een third person camera
 class ThirdPersonCamera {
   constructor(params) {
     this._params = params;
@@ -867,12 +788,14 @@ class ThirdPersonCamera {
     this._currentLookat = new THREE.Vector3();
   }
 
+  // Zet de camera verder van de speler
   _CalculateIdealOffset() {
     const idealOffset = new THREE.Vector3(-100, 100, -90);
     idealOffset.add(this._params.target.Position);
     return idealOffset;
   }
 
+  // Zet de camera naar een punt waar de speler naar kijkt
   _CalculateIdealLookat() {
     const idealLookat = new THREE.Vector3(0, 5, 0);
     idealLookat.add(this._params.target.Position);
@@ -1089,6 +1012,7 @@ document.getElementById("outline").onclick = function () {
   document.querySelector('.outline').style.display = "none";
 }
 
+// Deze functie zorgt ervoor dat de frames mooi over elkaar lopen en niks blijft steken.
 function _LerpOverFrames(frames, t) {
   const s = new THREE.Vector3(0, 0, 0);
   const e = new THREE.Vector3(100, 0, 0);
