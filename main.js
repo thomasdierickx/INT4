@@ -86,6 +86,7 @@ class BasicCharacterController {
       document.getElementById("sectionChangeReaction").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction2").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction3").style.visibility = "hidden";
+      document.getElementById("pngSchool2").style.visibility = "hidden";
     }
     if (this._position.x > 520) {
       document.getElementById("sectionChange").style.visibility = "hidden";
@@ -94,6 +95,7 @@ class BasicCharacterController {
       document.getElementById("sectionChangeReaction").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction2").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction3").style.visibility = "hidden";
+      document.getElementById("pngSchool2").style.visibility = "hidden";
     }
 
     document.getElementById("answer1").onclick = function () {
@@ -175,6 +177,7 @@ class BasicCharacterController {
       document.getElementById("sectionChangeReaction1NPC2").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction2NPC2").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction3NPC2").style.visibility = "hidden";
+      document.getElementById("pngSchool").style.visibility = "hidden";
     }
     if (this._position.x > 520) {
       document.getElementById("sectionChangeNPC2").style.visibility = "hidden";
@@ -186,6 +189,7 @@ class BasicCharacterController {
       document.getElementById("sectionChangeReaction1NPC2").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction2NPC2").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction3NPC2").style.visibility = "hidden";
+      document.getElementById("pngSchool").style.visibility = "hidden";
     }
 
     document.getElementById("answer1NPC2").onclick = function () {
@@ -259,6 +263,7 @@ class BasicCharacterController {
       document.getElementById("sectionChange3NPC3").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction2NPC3").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction3NPC3").style.visibility = "hidden";
+      document.getElementById("pngLieke").style.visibility = "hidden";
     }
     if (this._position.x > 720) {
       document.getElementById("sectionChangeNPC3").style.visibility = "hidden";
@@ -266,6 +271,7 @@ class BasicCharacterController {
       document.getElementById("sectionChange3NPC3").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction2NPC3").style.visibility = "hidden";
       document.getElementById("sectionChangeReaction3NPC3").style.visibility = "hidden";
+      document.getElementById("pngLieke").style.visibility = "hidden";
     }
 
     document.getElementById("answer1NPC3").onclick = function () {
@@ -859,7 +865,7 @@ class Canvas {
     const plane = new THREE.Mesh(
       new THREE.PlaneGeometry(5000, 5000, 10, 10),
       new THREE.MeshStandardMaterial({
-        color: 0x7CFC00,
+        color: 0xF5D7C8,
       }));
     plane.castShadow = false;
     plane.receiveShadow = true;
@@ -987,6 +993,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 document.getElementById("btn").onclick = function () {
+  let intro = document.querySelector('.section__start');
   let obj = document.querySelector('.preloader');
   let inner = document.querySelector('.preloader_inner');
   let page = document.querySelector('.page');
@@ -1000,17 +1007,12 @@ document.getElementById("btn").onclick = function () {
         obj.style.display = "none";
         inner.style.display = "none";
         page.style.display = "none";
-        document.querySelector('.outline').style.display = "flex";
-        // document.querySelector('.characterSelection').style.display = "flex";
+        intro.style.display = "none";
         clearInterval(t);
         w = 0;
       }
     }, 20);
 };
-
-document.getElementById("outline").onclick = function () {
-  document.querySelector('.outline').style.display = "none";
-}
 
 // Deze functie zorgt ervoor dat de frames mooi over elkaar lopen en niks blijft steken.
 function _LerpOverFrames(frames, t) {
